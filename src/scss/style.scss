@@ -1,0 +1,29 @@
+    /*!
+    Theme Name: Acemar
+    Theme URI: https://getready.com
+    Author: GetReady
+    Author URI: https://getready.com
+    Description: Custom WordPress theme for Acemar
+    Version: 1.0.0
+    License: GNU General Public License v2 or later
+    License URI: http://www.gnu.org/licenses/gpl-2.0.html
+    Text Domain: acemar
+    */
+
+    // ============================================
+    // Main SCSS - Acemar Theme by GetReady
+    // ============================================
+
+    // Base
+    @import 'base/variables';
+    @import 'base/mixins';
+    @import 'base/reset';
+    @import 'base/typography';
+
+    // Components
+    @import 'components/botones';
+
+// Layouts (SIN la 's')
+@import 'layout/header';
+@import 'layout/footer';
+@import 'pages/blog';

@@ -1,0 +1,69 @@
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tenor+Sans&display=swap');
+
+// Box sizing reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Reset margins and paddings
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// HTML and Body
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-text;
+  background-color: $color-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Links
+a {
+  color: $color-secondary;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Lists
+ul,
+ol {
+  list-style: none;
+}
+
+// Container
+.container {
+  @include container;
+}
+
+// Section spacing
+section {
+  padding: $spacing-xxl 0;
+  
+  @include respond-to('tablet') {
+    padding: $spacing-xl 0;
+  }
+}

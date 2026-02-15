@@ -1,0 +1,25 @@
+// ============================================
+// Hero Section - Acemar Theme
+// ============================================
+
+.hero-page {
+    // El hero ocupa toda la pantalla
+    .wp-block-acemar-hero-slider {
+        height: 100vh;
+        margin-top: 0;
+        position: relative;
+        
+        @include respond-to(tablet) {
+            height: 80vh; // Más pequeño en mobile
+        }
+    }
+}
+
+// Compensar el header transparente en el contenido posterior
+.hero-template {
+    #main-content {
+        > *:not(.wp-block-acemar-hero-slider) {
+            margin-top: 80px; // Altura aprox del header
+        }
+    }
+}

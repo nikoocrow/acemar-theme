@@ -1,0 +1,48 @@
+// Colors
+$color-primary: #F4C430; // Amarillo dorado
+$color-secondary: #000000;
+$color-white: #ffffff;
+$color-text: #333333;
+$color-text-light: #666666;
+$color-background: #f9f9f9;
+
+// Typography
+$font-heading: "Italiana", sans-serif;
+$font-body: "Tenor Sans", sans-serif;
+$font-button: "Playfair Display", serif;
+
+$font-size-base: 16px;
+$line-height-base: 1.6;
+
+// Heading sizes
+$h1-size: 3rem; // 48px
+$h2-size: 2.5rem; // 40px
+$h3-size: 2rem; // 32px
+$h4-size: 1.5rem; // 24px
+$h5-size: 1.25rem; // 20px
+$h6-size: 1rem; // 16px
+
+// Spacing
+$spacing-xs: 0.5rem; // 8px
+$spacing-sm: 1rem; // 16px
+$spacing-md: 1.5rem; // 24px
+$spacing-lg: 2rem; // 32px
+$spacing-xl: 3rem; // 48px
+$spacing-xxl: 4rem; // 64px
+
+// Border
+$border-radius: 4px;
+$border-width: 2px;
+
+// Transitions
+$transition-speed: 0.3s;
+$transition-ease: ease-in-out;
+
+// Breakpoints
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$breakpoint-wide: 1200px;
+
+// Container
+$container-max-width: 1200px;

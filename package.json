@@ -1,0 +1,22 @@
+{
+  "name": "acemar-theme",
+  "version": "1.0.0",
+  "description": "Theme WordPress para Acemar - GetReady",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp build"
+  },
+  "author": "GetReady",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.69.5",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "browser-sync": "^2.29.3"
+  }
+}
