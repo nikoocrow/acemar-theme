@@ -11,11 +11,11 @@ if (!defined('ABSPATH')) {
 }
 
 // ============================================================
-// AUTO-LOADER: carga todos los archivos PHP de /inc
+// AUTO-LOADER: orden explícito para garantizar dependencias
 // ============================================================
-foreach (glob(get_template_directory() . '/inc/*.php') as $file) {
-    require_once $file;
-}
+require_once get_template_directory() . '/inc/footer-options.php';
+require_once get_template_directory() . '/inc/acf-fields.php';
+require_once get_template_directory() . '/inc/custom-post-types.php';
 
 // ============================================================
 // THEME SETUP
@@ -62,7 +62,7 @@ function acemar_enqueue_assets() {
         true
     );
 
-    // JS del Blog (solo en páginas de blog)
+    // JS del Blog
     if (is_post_type_archive('acemar_blog') || is_singular('acemar_blog') || is_tax('blog_category')) {
         wp_enqueue_script(
             'acemar-blog-script',
@@ -76,6 +76,30 @@ function acemar_enqueue_assets() {
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce'   => wp_create_nonce('acemar_blog_nonce'),
         ));
+    }
+
+    // JS del Single Proyecto ← ahora DENTRO de la función
+    if ( is_singular('acemar_proyecto') ) {
+        wp_enqueue_style(
+            'splide-css',
+            'https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css',
+            array(),
+            '4.1.4'
+        );
+        wp_enqueue_script(
+            'splide-js',
+            'https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js',
+            array(),
+            '4.1.4',
+            true
+        );
+        wp_enqueue_script(
+            'acemar-proyecto-script',
+            $uri . '/assets/js/single-proyecto.js',
+            array('splide-js'),
+            filemtime($dir . '/assets/js/single-proyecto.js'),
+            true
+        );
     }
 }
 add_action('wp_enqueue_scripts', 'acemar_enqueue_assets');
@@ -98,7 +122,6 @@ function acemar_blog_customizer($wp_customize) {
         'priority' => 30,
     ));
 
-    // Imagen Hero
     $wp_customize->add_setting('blog_hero_image');
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'blog_hero_image', array(
         'label'    => __('Imagen Hero del Blog', 'acemar'),
@@ -106,7 +129,6 @@ function acemar_blog_customizer($wp_customize) {
         'settings' => 'blog_hero_image',
     )));
 
-    // Título Hero
     $wp_customize->add_setting('blog_hero_title', array(
         'default'           => 'BLOG',
         'sanitize_callback' => 'sanitize_text_field',
@@ -117,7 +139,6 @@ function acemar_blog_customizer($wp_customize) {
         'type'    => 'text',
     ));
 
-    // Estilo de Header
     $wp_customize->add_setting('blog_header_style', array(
         'default'           => 'transparent',
         'sanitize_callback' => 'sanitize_text_field',
@@ -134,3 +155,13 @@ function acemar_blog_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'acemar_blog_customizer');
+
+
+
+// Forzar header transparente en single proyecto
+add_filter('acf/load_value/name=estilo_de_header', function( $value, $post_id, $field ) {
+    if ( is_singular('acemar_proyecto') ) {
+        return 'transparent';
+    }
+    return $value;
+}, 10, 3);

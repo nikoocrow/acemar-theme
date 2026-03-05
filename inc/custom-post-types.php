@@ -10,6 +10,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+
+
+
 /**
  * Register Blog Custom Post Type
  */
@@ -130,3 +133,18 @@ function acemar_rewrite_flush() {
     flush_rewrite_rules();
 }
 register_activation_hook(__FILE__, 'acemar_rewrite_flush');
+
+
+/**
+ * Flush rewrite rules cuando se activa el plugin acemar-blocks
+ * para que el CPT acemar_proyecto funcione correctamente
+ */
+add_action( 'init', function() {
+    if ( function_exists( 'acemar_register_cpt_proyecto' ) ) {
+        // El CPT ya está registrado por el plugin, solo flush si es necesario
+        if ( ! get_option( 'acemar_proyecto_flushed' ) ) {
+            flush_rewrite_rules();
+            update_option( 'acemar_proyecto_flushed', true );
+        }
+    }
+}, 99 );
