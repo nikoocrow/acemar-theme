@@ -86,11 +86,14 @@
     
     .logo-img {
         width: 100px !important;
-        height: 50px;
+        height: 50px !important;
+        a{
+            width: 200px !important;
+        }
         
         @include respond-to(tablet) {
             max-width: 80px !important;
-              height: 50px;
+              height: 50px !important;;
         }
     }
     
@@ -122,6 +125,7 @@
 .site-branding {
     .site-logo {
         display: inline-block;
+        width: 200px !important;
         
         .logo-img {
             max-width: 150px;

@@ -421,12 +421,15 @@ i {
 }
 .header-minimal .logo-img {
   width: 100px !important;
-  height: 50px;
+  height: 50px !important;
+}
+.header-minimal .logo-img a {
+  width: 200px !important;
 }
 @media (max-width: 768px) {
   .header-minimal .logo-img {
     max-width: 80px !important;
-    height: 50px;
+    height: 50px !important;
   }
 }
 .header-minimal .main-navigation #primary-menu {
@@ -446,6 +449,7 @@ i {
 
 .site-branding .site-logo {
   display: inline-block;
+  width: 200px !important;
 }
 .site-branding .site-logo .logo-img {
   max-width: 150px;
