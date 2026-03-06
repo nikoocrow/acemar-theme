@@ -1718,16 +1718,26 @@ i {
 }
 .proyecto-galeria__arrow.splide__arrow {
   position: static;
-  -webkit-transform: none;
-  transform: none;
   opacity: 1;
-}
-.proyecto-galeria__arrow.splide__arrow:disabled {
-  opacity: 0.35;
-  cursor: default;
 }
 .proyecto-galeria__arrow.splide__arrow svg {
   fill: none;
+}
+.proyecto-galeria__arrow.splide__arrow--prev {
+  -webkit-transform: none;
+  transform: none;
+}
+.proyecto-galeria__arrow.splide__arrow--prev svg {
+  -webkit-transform: none;
+  transform: none;
+}
+.proyecto-galeria__arrow.splide__arrow--next {
+  -webkit-transform: none;
+  transform: none;
+}
+.proyecto-galeria__arrow.splide__arrow--next svg {
+  -webkit-transform: none;
+  transform: none;
 }
 
 .proyecto-lightbox {
@@ -1934,5 +1944,69 @@ i {
 .proyecto-relacionado-card__link:hover .proyecto-relacionado-card__img {
   -webkit-transform: scale(1.04);
   transform: scale(1.04);
+}
+
+.proyecto-caso {
+  padding: 80px 20px;
+  background-color: #F5F2EE;
+}
+@media (min-width: 768px) {
+  .proyecto-caso {
+    padding: 100px 40px;
+  }
+}
+.proyecto-caso__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .proyecto-caso__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+  }
+}
+.proyecto-caso__titulo {
+  font-family: "Italiana", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: #1A1A1A;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.proyecto-caso__subtitulo {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 0.95rem;
+  color: #C8A96E;
+  letter-spacing: 0.08em;
+  margin: 0 0 28px;
+  text-transform: uppercase;
+}
+.proyecto-caso__texto {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 0.95rem;
+  color: #4A4A4A;
+  line-height: 1.8;
+}
+.proyecto-caso__texto p {
+  margin: 0 0 1em;
+}
+.proyecto-caso__texto p:last-child {
+  margin: 0;
+}
+.proyecto-caso__imagen img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  aspect-ratio: 4/3;
 }
 /*# sourceMappingURL=style.css.map */

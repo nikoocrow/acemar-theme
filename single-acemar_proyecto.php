@@ -14,6 +14,11 @@ while ( have_posts() ) :
     $feature_img = get_the_post_thumbnail_url( get_the_ID(), 'full' );
     $feature_alt = get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true );
 
+    $caso_titulo    = get_field( 'proyecto_caso_titulo' );
+    $caso_subtitulo = get_field( 'proyecto_caso_subtitulo' );
+    $caso_texto     = get_field( 'proyecto_caso_texto' );
+    $caso_imagen    = get_field( 'proyecto_caso_imagen' );
+
     $dato_1  = get_field( 'proyecto_dato_1' );
     $dato_2  = get_field( 'proyecto_dato_2' );
     $dato_3  = get_field( 'proyecto_dato_3' );
@@ -99,6 +104,42 @@ for ( $i = 1; $i <= 6; $i++ ) {
         </div>
     </div>
 </section>
+
+
+<!-- CASO DE ÉXITO -->
+<?php if ( $caso_titulo || $caso_texto ) : ?>
+<section class="proyecto-caso">
+    <div class="proyecto-caso__inner">
+
+        <div class="proyecto-caso__contenido">
+            <?php if ( $caso_titulo ) : ?>
+                <h2 class="proyecto-caso__titulo"><?php echo esc_html( $caso_titulo ); ?></h2>
+            <?php endif; ?>
+            <?php if ( $caso_subtitulo ) : ?>
+                <p class="proyecto-caso__subtitulo"><?php echo esc_html( $caso_subtitulo ); ?></p>
+            <?php endif; ?>
+            <?php if ( $caso_texto ) : ?>
+                <div class="proyecto-caso__texto">
+                    <?php echo wp_kses_post( nl2br( $caso_texto ) ); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <?php if ( $caso_imagen ) : ?>
+        <div class="proyecto-caso__imagen">
+            <img
+                src="<?php echo esc_url( $caso_imagen['sizes']['large'] ); ?>"
+                alt="<?php echo esc_attr( $caso_imagen['alt'] ?: $titulo ); ?>"
+                loading="lazy"
+            />
+        </div>
+        <?php endif; ?>
+
+    </div>
+</section>
+<?php endif; ?>
+
+
 
 <!-- GALERÍA -->
 <?php if ( $galeria ) : ?>

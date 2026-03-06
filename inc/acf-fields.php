@@ -52,6 +52,40 @@ if (function_exists('acf_add_local_field_group')) {
                 'required'    => 0,
             ),
             array(
+                'key'         => 'field_proyecto_caso_titulo',
+                'label'       => 'Caso de Éxito — Título',
+                'name'        => 'proyecto_caso_titulo',
+                'type'        => 'text',
+                'placeholder' => 'Ej: Caso de Éxito',
+                'required'    => 0,
+            ),
+            array(
+                'key'         => 'field_proyecto_caso_subtitulo',
+                'label'       => 'Caso de Éxito — Subtítulo',
+                'name'        => 'proyecto_caso_subtitulo',
+                'type'        => 'text',
+                'placeholder' => 'Ej: Tipo de proyecto',
+                'required'    => 0,
+            ),
+            array(
+                'key'      => 'field_proyecto_caso_texto',
+                'label'    => 'Caso de Éxito — Texto',
+                'name'     => 'proyecto_caso_texto',
+                'type'     => 'textarea',
+                'rows'     => 5,
+                'required' => 0,
+            ),
+            array(
+                'key'           => 'field_proyecto_caso_imagen',
+                'label'         => 'Caso de Éxito — Imagen',
+                'name'          => 'proyecto_caso_imagen',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'library'       => 'all',
+                'required'      => 0,
+            ),
+            array(
                 'key'           => 'field_proyecto_imagen_1',
                 'label'         => 'Imagen Galería 1',
                 'name'          => 'proyecto_galeria_1',
@@ -119,19 +153,19 @@ if (function_exists('acf_add_local_field_group')) {
      * Blog Post Settings
      */
     acf_add_local_field_group(array(
-        'key' => 'group_blog_post_settings',
+        'key'   => 'group_blog_post_settings',
         'title' => 'Configuración del Post',
         'fields' => array(
             array(
-                'key'          => 'field_blog_hero_image',
-                'label'        => 'Imagen Hero (Opcional)',
-                'name'         => 'blog_hero_image',
-                'type'         => 'image',
-                'instructions' => 'Si deseas una imagen diferente a la imagen destacada para el hero del blog.',
-                'required'     => 0,
+                'key'           => 'field_blog_hero_image',
+                'label'         => 'Imagen Hero (Opcional)',
+                'name'          => 'blog_hero_image',
+                'type'          => 'image',
+                'instructions'  => 'Si deseas una imagen diferente a la imagen destacada para el hero del blog.',
+                'required'      => 0,
                 'return_format' => 'array',
-                'preview_size' => 'medium',
-                'library'      => 'all',
+                'preview_size'  => 'medium',
+                'library'       => 'all',
             ),
             array(
                 'key'           => 'field_blog_featured',
@@ -154,12 +188,12 @@ if (function_exists('acf_add_local_field_group')) {
                 'placeholder'   => 'Seguir leyendo',
             ),
             array(
-                'key'      => 'field_blog_excerpt_custom',
-                'label'    => 'Resumen Personalizado',
-                'name'     => 'blog_excerpt_custom',
-                'type'     => 'textarea',
-                'required' => 0,
-                'rows'     => 3,
+                'key'       => 'field_blog_excerpt_custom',
+                'label'     => 'Resumen Personalizado',
+                'name'      => 'blog_excerpt_custom',
+                'type'      => 'textarea',
+                'required'  => 0,
+                'rows'      => 3,
                 'new_lines' => 'br',
             ),
             array(
@@ -254,12 +288,12 @@ if (function_exists('acf_add_local_field_group')) {
 
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page(array(
-        'page_title' => 'Configuración del Blog',
-        'menu_title' => 'Configuración Blog',
-        'menu_slug'  => 'blog-settings',
-        'capability' => 'edit_posts',
+        'page_title'  => 'Configuración del Blog',
+        'menu_title'  => 'Configuración Blog',
+        'menu_slug'   => 'blog-settings',
+        'capability'  => 'edit_posts',
         'parent_slug' => 'edit.php?post_type=acemar_blog',
-        'position'   => false,
-        'icon_url'   => 'dashicons-admin-settings',
+        'position'    => false,
+        'icon_url'    => 'dashicons-admin-settings',
     ));
 }
