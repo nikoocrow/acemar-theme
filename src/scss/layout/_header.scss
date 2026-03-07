@@ -364,3 +364,58 @@
         }
     }
 }
+
+// ============================================
+// Header Sticky (scroll - solo desktop)
+// ============================================
+
+.header-sticky {
+    position: fixed !important;
+    top: 40px; // Altura del top-bar
+    left: 0;
+    right: 0;
+    background-color: #1f2020 !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
+    padding: $spacing-sm 0 !important;
+    z-index: 200;
+    animation: slideDown 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
+
+    .logo-img {
+        filter: brightness(0) invert(1) !important;
+    }
+
+    .main-navigation {
+        #primary-menu {
+            li a {
+                color: $color-white !important;
+
+                &:hover {
+                    color: $color-primary !important;
+                }
+            }
+
+            ul li a {
+                color: $color-white !important;
+
+                &:hover {
+                    color: $color-primary !important;
+                }
+            }
+        }
+    }
+
+    .menu-toggle {
+        color: $color-white !important;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

@@ -25,7 +25,10 @@ if ($header_style === 'transparent') {
 } elseif ($header_style === 'minimal') {
     $header_class .= ' header-minimal';
 }
+
+get_template_part('template-parts/top-bar');
 ?>
+
 
 <header id="masthead" class="<?php echo esc_attr($header_class); ?>">
     <div class="header-inner">

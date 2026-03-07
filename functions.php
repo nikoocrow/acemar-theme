@@ -34,6 +34,7 @@ function acemar_theme_setup() {
     register_nav_menus(array(
         'primary' => __('Primary Menu', 'acemar'),
         'footer'  => __('Footer Menu', 'acemar'),
+        'top_bar' => __('Top Bar Menu', 'acemar'),
     ));
 }
 add_action('after_setup_theme', 'acemar_theme_setup');
@@ -59,6 +60,15 @@ function acemar_enqueue_assets() {
         $uri . '/assets/js/header.js',
         array(),
         filemtime($dir . '/assets/js/header.js'),
+        true
+    );
+
+    // JS del Top Bar
+    wp_enqueue_script(
+        'acemar-top-bar-script',
+        $uri . '/assets/js/top-bar.js',
+        array(),
+        filemtime($dir . '/assets/js/top-bar.js'),
         true
     );
 
