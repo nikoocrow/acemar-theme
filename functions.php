@@ -53,6 +53,15 @@ function acemar_enqueue_assets() {
         filemtime($dir . '/assets/css/style.css')
     );
 
+    // JS del Header (menu toggle mobile) — se carga en todas las páginas
+    wp_enqueue_script(
+        'acemar-header-script',
+        $uri . '/assets/js/header.js',
+        array(),
+        filemtime($dir . '/assets/js/header.js'),
+        true
+    );
+
     // JS principal
     wp_enqueue_script(
         'acemar-main-script',
@@ -78,7 +87,7 @@ function acemar_enqueue_assets() {
         ));
     }
 
-    // JS del Single Proyecto ← ahora DENTRO de la función
+    // JS del Single Proyecto
     if ( is_singular('acemar_proyecto') ) {
         wp_enqueue_style(
             'splide-css',
@@ -155,8 +164,6 @@ function acemar_blog_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'acemar_blog_customizer');
-
-
 
 // Forzar header transparente en single proyecto
 add_filter('acf/load_value/name=estilo_de_header', function( $value, $post_id, $field ) {

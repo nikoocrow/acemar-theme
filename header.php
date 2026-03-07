@@ -20,7 +20,6 @@
 $header_style = get_field('estilo_de_header');
 $header_class = 'site-header';
 
-// Solo usar el campo ACF
 if ($header_style === 'transparent') {
     $header_class .= ' header-transparent';
 } elseif ($header_style === 'minimal') {
@@ -35,8 +34,20 @@ if ($header_style === 'transparent') {
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imagenes/logo.svg" alt="<?php bloginfo('name'); ?>" class="logo-img">
             </a>
         </div>
+
+        <!-- Botón hamburguesa (solo visible en mobile) -->
+        <button class="menu-toggle" id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Abrir menú', 'acemar'); ?>">
+            <span class="menu-toggle__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hamburger-icon" aria-hidden="true">
+                    <path class="line line-1" stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5" />
+                    <path class="line line-2" stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.75h16.5" />
+                    <path class="line line-3" stroke-linecap="round" stroke-linejoin="round" d="M3.75 14.25h16.5" />
+                    <path class="line line-4" stroke-linecap="round" stroke-linejoin="round" d="M3.75 18.75h16.5" />
+                </svg>
+            </span>
+        </button>
         
-        <nav id="site-navigation" class="main-navigation">
+        <nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e('Menú principal', 'acemar'); ?>">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'primary',
