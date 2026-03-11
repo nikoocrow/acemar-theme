@@ -59,10 +59,18 @@
 
                 if (window.scrollY > 80) {
                     header.classList.add('header-sticky');
-                    if (topBar) topBar.classList.add('top-bar-sticky');
+                    if (topBar) {
+                        topBar.classList.add('top-bar-sticky');
+                        topBar.style.backgroundColor = '#ffffff';
+                        topBar.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
+                    }
                 } else {
                     header.classList.remove('header-sticky');
-                    if (topBar) topBar.classList.remove('top-bar-sticky');
+                    if (topBar) {
+                        topBar.classList.remove('top-bar-sticky');
+                        topBar.style.backgroundColor = '';
+                        topBar.style.borderBottom = '';
+                    }
                 }
             };
 

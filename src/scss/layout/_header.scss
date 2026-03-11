@@ -25,7 +25,7 @@
 // ============================================
 
 .menu-toggle {
-    display: none; // Solo visible en mobile
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
@@ -52,7 +52,6 @@
         overflow: visible;
     }
 
-    // Animación de las líneas del SVG
     .line {
         transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
                     opacity 0.25s ease,
@@ -60,7 +59,6 @@
         transform-origin: center;
     }
 
-    // Estado abierto: transforma a X
     &.is-active {
         color: $color-primary;
 
@@ -135,7 +133,6 @@
 @include respond-to(tablet) {
 
     .main-navigation {
-        // Posicionamiento: panel que cae debajo del header
         position: absolute;
         top: 100%;
         left: 0;
@@ -145,7 +142,6 @@
         overflow: hidden;
         z-index: 150;
 
-        // Estado cerrado
         max-height: 0;
         opacity: 0;
         pointer-events: none;
@@ -155,7 +151,6 @@
             opacity 0.35s ease,
             transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 
-        // Estado abierto
         &.nav-open {
             max-height: 600px;
             opacity: 1;
@@ -183,7 +178,6 @@
                     opacity 0.3s ease,
                     transform 0.3s ease;
 
-                // Stagger animado con CSS custom properties
                 @for $i from 1 through 10 {
                     &:nth-child(#{$i}) {
                         transition-delay: #{$i * 0.05}s;
@@ -210,14 +204,12 @@
             }
         }
 
-        // Cuando el menú está abierto: animar los items
         &.nav-open #primary-menu li {
             opacity: 1;
             transform: translateY(0);
         }
     }
 
-    // Header inner: sin columna en mobile (se maneja con posición absoluta del nav)
     .header-inner {
         flex-direction: row !important;
         gap: 0 !important;

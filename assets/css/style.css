@@ -634,6 +634,19 @@ i {
   animation: topBarSlideDown 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
+#top-bar.top-bar-sticky,
+div#top-bar.top-bar-sticky {
+  background-color: #ffffff !important;
+}
+#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a,
+div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a {
+  color: rgba(26, 26, 26, 0.75) !important;
+}
+#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover,
+div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
+  color: #F4C430 !important;
+}
+
 @-webkit-keyframes topBarSlideDown {
   from {
     -webkit-transform: translateY(-100%);

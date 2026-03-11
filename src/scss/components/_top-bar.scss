@@ -219,8 +219,22 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 301; // Por encima del header sticky (z-index: 200)
+    z-index: 301;
     animation: topBarSlideDown 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+// Fondo blanco + links oscuros al hacer scroll
+#top-bar.top-bar-sticky,
+div#top-bar.top-bar-sticky {
+    background-color: #ffffff !important;
+
+    .top-bar__nav #top-bar-menu li a {
+        color: rgba(#1a1a1a, 0.75) !important;
+
+        &:hover {
+            color: $color-primary !important;
+        }
+    }
 }
 
 @keyframes topBarSlideDown {
