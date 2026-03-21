@@ -1,0 +1,142 @@
+// =============================================================================
+// 404 Page
+// =============================================================================
+
+.page-404 {
+  padding: 0 !important;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-text;
+    z-index: 1;
+  }
+
+  &__deco {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 70px;
+    background-color: $color-text;
+    z-index: 1;
+  }
+
+  &__bg-number {
+    font-family: $font-heading;
+    font-size: clamp(140px, 24vw, 280px);
+    line-height: 1;
+    color: $color-text;
+    opacity: 0.06;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    display: block;
+    z-index: 0;
+    letter-spacing: -8px;
+  }
+
+  &__corners {
+    position: absolute;
+    inset: 28px;
+    pointer-events: none;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-color: $color-primary;
+      border-style: solid;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      border-width: 1px 0 0 1px;
+    }
+
+    &::after {
+      bottom: 0;
+      right: 0;
+      border-width: 0 1px 1px 0;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-xxl $spacing-md;
+    width: 100%;
+  }
+
+  &__label {
+    font-family: $font-body;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 400;
+    color: $color-text;
+    line-height: 1.2;
+    margin: 0;
+
+    em {
+      font-style: italic;
+      color: $color-primary;
+    }
+  }
+
+  &__divider {
+    width: 40px;
+    height: 2px;
+    background-color: $color-primary;
+    margin: $spacing-md auto;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $color-text-light;
+    line-height: $line-height-base;
+    max-width: 460px;
+    margin: 0 0 $spacing-lg;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

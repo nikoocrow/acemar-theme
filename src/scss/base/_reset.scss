@@ -62,9 +62,9 @@ ol {
 
 // Section spacing
 section {
-  padding: $spacing-xxl 0;
+  padding: $spacing-xxl;
 
   @include respond-to('tablet') {
-    padding: $spacing-xl 0;
+    padding: $spacing-xl;
   }
 }

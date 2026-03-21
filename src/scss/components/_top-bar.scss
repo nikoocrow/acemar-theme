@@ -154,7 +154,7 @@
 
             li {
                 a {
-                    display: block;
+                    display: inline-block;
                     font-family: $font-body;
                     font-size: 0.75rem;
                     font-weight: 500;
@@ -164,13 +164,34 @@
                     text-decoration: none;
                     padding: 0 $spacing-sm;
                     white-space: nowrap;
+                    position: relative;
                     transition: color 0.2s ease;
+
+                    // Línea animada — crece de izquierda a derecha
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -2px;
+                        left: $spacing-sm;
+                        right: $spacing-sm;
+                        height: 1px;
+                        background-color: #FFCC00;
+                        transform: scaleX(0);
+                        transform-origin: left center;
+                        transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+                    }
 
                     &:hover {
                         color: #FFCC00;
+
+                        &::after {
+                            transform: scaleX(1);
+                        }
                     }
 
+                    // Mobile: sin línea animada
                     @include respond-to(tablet) {
+                        display: block;
                         font-size: 0.875rem;
                         padding: 0.75rem $spacing-md;
                         white-space: normal;
@@ -178,6 +199,10 @@
                         color: rgba($color-white, 0.85);
                         text-transform: none;
                         letter-spacing: 0;
+
+                        &::after {
+                            display: none;
+                        }
                     }
                 }
 
@@ -230,6 +255,11 @@ div#top-bar.top-bar-sticky {
 
     .top-bar__nav #top-bar-menu li a {
         color: rgba(#1a1a1a, 0.75) !important;
+
+        // Línea amarilla sigue funcionando sobre fondo blanco
+        &::after {
+            background-color: $color-primary;
+        }
 
         &:hover {
             color: $color-primary !important;
