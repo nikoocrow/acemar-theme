@@ -235,7 +235,7 @@
 
 .header-transparent {
     position: absolute;
-    top: 0;
+    top: 40px; // Debajo del top-bar
     left: 0;
     right: 0;
     z-index: 200;
@@ -432,5 +432,207 @@
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+// ============================================
+// Submenús — un nivel, desktop hover / mobile click
+// ============================================
+
+.main-navigation {
+    #primary-menu {
+
+        // Item padre con hijos
+        li.menu-item-has-children {
+            position: relative;
+
+            // Flecha SVG inline via CSS
+            > a {
+                padding-right: 1.75rem; // espacio para la flecha
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    right: 0.5rem;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(0deg);
+                    width: 10px;
+                    height: 10px;
+                    background-color: currentColor;
+                    clip-path: polygon(0 25%, 50% 75%, 100% 25%);
+                    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+                    pointer-events: none;
+                }
+            }
+
+            // Flecha girada cuando está abierto
+            &.is-open > a::before {
+                transform: translateY(-50%) rotate(180deg);
+            }
+
+            // Submenu
+            > .sub-menu {
+                position: absolute;
+                top: calc(100% + 4px);
+                left: 0;
+                min-width: 220px;
+                background-color: $color-white;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+                list-style: none;
+                margin: 0;
+                padding: $spacing-xs 0;
+                z-index: 500;
+
+                // Animación: aparece hacia abajo con fade
+                opacity: 0;
+                transform: translateY(-8px);
+                pointer-events: none;
+                transition:
+                    opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+
+                li {
+                    display: block;
+                    width: 100%;
+
+                    a {
+                        display: block;
+                        width: 100%;
+                        padding: 0.6rem $spacing-md;
+                        font-family: $font-body;
+                        font-size: 0.9rem;
+                        color: $color-text;
+                        white-space: nowrap;
+                        position: relative;
+
+                        // Línea animada también en submenú
+                        &::after {
+                            left: $spacing-md;
+                            right: $spacing-md;
+                        }
+
+                        &:hover {
+                            color: $color-primary;
+                            background-color: rgba($color-primary, 0.04);
+                        }
+                    }
+                }
+            }
+
+            // Abierto: desktop hover o clase .is-open (mobile/click)
+            &:hover > .sub-menu,
+            &.is-open > .sub-menu {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+        }
+    }
+}
+
+// ============================================
+// Mobile: submenú como acordeón
+// ============================================
+
+@include respond-to(tablet) {
+    .main-navigation {
+        #primary-menu {
+
+            li.menu-item-has-children {
+
+                // Sin posición absoluta en mobile
+                > a {
+                    padding-right: 3rem;
+
+                    // La flecha apunta hacia abajo, rota al abrir
+                    &::before {
+                        right: $spacing-md;
+                    }
+                }
+
+                > .sub-menu {
+                    position: static;
+                    box-shadow: none;
+                    background-color: rgba($color-secondary, 0.04);
+                    border-top: 1px solid rgba($color-secondary, 0.07);
+                    min-width: 0;
+                    width: 100%;
+                    padding: 0;
+                    transform: none;
+
+                    // Acordeón: max-height animado
+                    max-height: 0;
+                    overflow: hidden;
+                    opacity: 1;
+                    pointer-events: none;
+                    transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+                    li a {
+                        padding: 0.75rem $spacing-lg;
+                        font-size: 0.9rem;
+                        border-bottom: 1px solid rgba($color-secondary, 0.05);
+                        background-color: transparent;
+
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+
+                // En mobile solo .is-open (no hover)
+                &:hover > .sub-menu {
+                    max-height: 0;
+                    pointer-events: none;
+                }
+
+                &.is-open > .sub-menu {
+                    max-height: 400px;
+                    pointer-events: auto;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
+// Header transparente: submenú con fondo oscuro
+// ============================================
+
+.header-transparent {
+    .main-navigation #primary-menu {
+        li.menu-item-has-children {
+            > .sub-menu {
+                background-color: rgba(#1f2020, 0.97);
+
+                li a {
+                    color: rgba($color-white, 0.85);
+
+                    &:hover {
+                        color: $color-primary;
+                        background-color: rgba($color-white, 0.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Header sticky: mismo fondo oscuro
+.header-sticky {
+    .main-navigation #primary-menu {
+        li.menu-item-has-children {
+            > .sub-menu {
+                background-color: #2a2b2b;
+
+                li a {
+                    color: rgba($color-white, 0.85) !important;
+
+                    &:hover {
+                        color: $color-primary !important;
+                        background-color: rgba($color-white, 0.05);
+                    }
+                }
+            }
+        }
     }
 }

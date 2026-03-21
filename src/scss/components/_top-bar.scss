@@ -196,7 +196,7 @@
                         padding: 0.75rem $spacing-md;
                         white-space: normal;
                         border-bottom: 1px solid rgba($color-white, 0.07);
-                        color: rgba($color-white, 0.85);
+                        color: rgba(#FFCC00, 0.85);
                         text-transform: none;
                         letter-spacing: 0;
 
@@ -275,5 +275,62 @@ div#top-bar.top-bar-sticky {
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+// ============================================
+// Top Bar Transparente (header-transparent)
+// ============================================
+
+.top-bar--transparent {
+    background-color: transparent;
+
+    // Al abrir el nav en desktop, el fondo del nav también transparente
+    .top-bar__nav {
+        // El nav slide desde la derecha no necesita fondo propio
+    }
+
+    // Especificidad alta para pisar el color base rgba(white, 0.8)
+    .top-bar__nav #top-bar-menu {
+        li a {
+            color: $color-secondary; // negro
+
+            &::after {
+                background-color: $color-primary; // dorado
+            }
+
+            &:hover {
+                color: $color-secondary;
+            }
+        }
+    }
+
+    // Mobile: el dropdown sí necesita fondo para ser legible
+    @include respond-to(tablet) {
+        background-color: rgba(#1f2020, 0.97);
+
+        .top-bar__nav {
+            &.nav-open {
+                background-color: rgba(#1f2020, 0.97);
+            }
+        }
+    }
+
+    // Al hacer sticky pierde la transparencia — JS ya maneja esto,
+    // pero por si acaso lo forzamos también en CSS
+    &.top-bar-sticky {
+        background-color: #ffffff !important;
+
+        #top-bar-menu li a {
+            color: rgba(#1a1a1a, 0.75) !important;
+
+            &::after {
+                background-color: $color-primary;
+            }
+
+            &:hover {
+                color: $color-primary !important;
+            }
+        }
     }
 }
