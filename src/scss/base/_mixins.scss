@@ -10,6 +10,11 @@
       @content;
     }
   }
+  @else if $breakpoint == 'nav' {
+    @media (max-width: #{$breakpoint-nav}) {
+      @content;
+    }
+  }
   @else if $breakpoint == 'desktop' {
     @media (min-width: #{$breakpoint-desktop}) {
       @content;

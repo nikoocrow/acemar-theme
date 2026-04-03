@@ -14,7 +14,7 @@
     z-index: 300;
     overflow: hidden;
 
-    @include respond-to(tablet) {
+    @include respond-to(nav) {
         overflow: visible;
         height: auto;
         flex-wrap: wrap;
@@ -39,7 +39,7 @@
         position: relative;
         transition: opacity 0.2s ease;
 
-        @include respond-to(tablet) {
+        @include respond-to(nav) {
             height: 44px;
             padding: 0 $spacing-md;
         }
@@ -110,7 +110,7 @@
         // ----------------------------------------
         // Nav: mobile → dropdown hacia abajo
         // ----------------------------------------
-        @include respond-to(tablet) {
+        @include respond-to(nav) {
             position: static;
             height: auto;
             width: 100%;
@@ -145,7 +145,7 @@
             padding: 0;
             gap: 0;
 
-            @include respond-to(tablet) {
+            @include respond-to(nav) {
                 flex-direction: column;
                 width: 100%;
                 background-color: #1f2020;
@@ -190,7 +190,7 @@
                     }
 
                     // Mobile: sin línea animada
-                    @include respond-to(tablet) {
+                    @include respond-to(nav) {
                         display: block;
                         font-size: 0.875rem;
                         padding: 0.75rem $spacing-md;
@@ -207,12 +207,12 @@
                 }
 
                 &:last-child a {
-                    @include respond-to(tablet) {
+                    @include respond-to(nav) {
                         border-bottom: none;
                     }
                 }
 
-                @include respond-to(tablet) {
+                @include respond-to(nav) {
                     opacity: 0;
                     transform: translateX(10px);
                     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -226,7 +226,7 @@
             }
         }
 
-        @include respond-to(tablet) {
+        @include respond-to(nav) {
             &.nav-open #top-bar-menu li {
                 opacity: 1;
                 transform: translateX(0);
@@ -306,12 +306,21 @@ div#top-bar.top-bar-sticky {
     }
 
     // Mobile: el dropdown sí necesita fondo para ser legible
-    @include respond-to(tablet) {
+    @include respond-to(nav) {
         background-color: rgba(#1f2020, 0.97);
 
         .top-bar__nav {
             &.nav-open {
                 background-color: rgba(#1f2020, 0.97);
+            }
+        }
+
+        // Fondo gris oscuro en mobile → links deben ser legibles
+        .top-bar__nav #top-bar-menu li a {
+            color: rgba(#FFCC00, 0.85);
+
+            &:hover {
+                color: #FFCC00;
             }
         }
     }

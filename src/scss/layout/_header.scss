@@ -34,7 +34,7 @@
     z-index: 300;
     position: relative;
 
-    @include respond-to(tablet) {
+    @include respond-to(nav) {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -138,7 +138,7 @@
 // Menú Mobile (dropdown hacia abajo)
 // ============================================
 
-@include respond-to(tablet) {
+@include respond-to(nav) {
 
     .main-navigation {
         position: absolute;
@@ -270,7 +270,7 @@
         color: $color-white;
     }
 
-    @include respond-to(tablet) {
+    @include respond-to(nav) {
         .main-navigation {
             background-color: rgba($color-secondary, 0.97);
 
@@ -311,7 +311,7 @@
             width: 200px !important;
         }
 
-        @include respond-to(tablet) {
+        @include respond-to(nav) {
             max-width: 80px !important;
             height: 50px !important;
         }
@@ -369,7 +369,7 @@
                 transform: scale(1.05);
             }
 
-            @include respond-to(tablet) {
+            @include respond-to(nav) {
                 max-width: 120px;
             }
 
@@ -534,7 +534,7 @@
 // Mobile: submenú como acordeón
 // ============================================
 
-@include respond-to(tablet) {
+@include respond-to(nav) {
     .main-navigation {
         #primary-menu {
 

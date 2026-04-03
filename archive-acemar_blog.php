@@ -79,7 +79,7 @@ get_header();
                         
                         switch ($category->slug) {
                             case 'inspirate':
-                                $layout_class = 'blog-grid-inspirate';
+                                $layout_class = 'blog-grid-productos';
                                 break;
                             case 'productos':
                                 $layout_class = 'blog-grid-productos';
@@ -101,7 +101,7 @@ get_header();
                                 $card_template = 'card-default';
                                 
                                 if ($category->slug === 'inspirate') {
-                                    $card_template = ($post_index === 1) ? 'card-large' : 'card-medium';
+                                    $card_template = 'card-product';
                                 } elseif ($category->slug === 'productos') {
                                     $card_template = 'card-product';
                                 } elseif ($category->slug === 'publicaciones-destacadas') {

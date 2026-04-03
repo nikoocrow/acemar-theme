@@ -51,7 +51,7 @@
         // Submenús
         // ----------------------------------------
         var isMobile = function () {
-            return window.innerWidth <= 810;
+            return window.innerWidth <= 1024;
         };
 
         var closeAllSubmenus = function (except) {
