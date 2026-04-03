@@ -11,10 +11,45 @@ if (!defined('ABSPATH')) {
 }
 
 // ============================================================
+// ACF DEPENDENCY CHECK
+// ============================================================
+function acemar_check_acf_dependency() {
+    if ( ! class_exists('ACF') ) {
+        // Aviso en el admin
+        add_action( 'admin_notices', function() {
+            $install_url = admin_url('plugin-install.php?s=advanced+custom+fields&tab=search&type=term');
+            echo '<div class="notice notice-error">';
+            echo '<p><strong>Acemar Theme requiere el plugin Advanced Custom Fields (ACF).</strong></p>';
+            echo '<p>Sin ACF el tema no funcionará correctamente. Por favor, <a href="' . esc_url( $install_url ) . '">instala y activa ACF</a> desde los plugins.</p>';
+            echo '</div>';
+        });
+
+        // Stubs para evitar errores fatales en el frontend
+        if ( ! function_exists('get_field') ) {
+            function get_field( $selector, $post_id = false ) { return null; }
+        }
+        if ( ! function_exists('the_field') ) {
+            function the_field( $selector, $post_id = false ) { return; }
+        }
+        if ( ! function_exists('have_rows') ) {
+            function have_rows( $selector, $post_id = false ) { return false; }
+        }
+        if ( ! function_exists('get_sub_field') ) {
+            function get_sub_field( $selector ) { return null; }
+        }
+
+        return false;
+    }
+    return true;
+}
+
+// ============================================================
 // AUTO-LOADER: orden explícito para garantizar dependencias
 // ============================================================
 require_once get_template_directory() . '/inc/footer-options.php';
-require_once get_template_directory() . '/inc/acf-fields.php';
+if ( acemar_check_acf_dependency() ) {
+    require_once get_template_directory() . '/inc/acf-fields.php';
+}
 require_once get_template_directory() . '/inc/custom-post-types.php';
 
 // ============================================================
