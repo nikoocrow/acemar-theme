@@ -69,9 +69,43 @@ h6 {
 p {
   font-family: $font-body;
   margin-bottom: $spacing-sm;
-  
+  margin: 1rem 5rem;
+
   &:last-child {
-    margin-bottom: 0;
+    margin: 20px 50px;
+  }
+}
+
+// Gutenberg paragraph block
+.wp-block-paragraph {
+  padding: 0 $spacing-xl;
+  margin-bottom: $spacing-lg;
+
+  @include respond-to('tablet') {
+    padding: 0 $spacing-md;
+  }
+
+  @include respond-to('mobile') {
+    padding: 0 $spacing-sm;
+  }
+}
+
+// Gutenberg image block
+.wp-block-image {
+  margin: 1rem 5rem;
+  border-radius: $border-radius * 4;
+  overflow: hidden;
+
+  img {
+    border-radius: $border-radius * 4;
+  }
+
+  @include respond-to('tablet') {
+    margin: 1rem $spacing-md;
+  }
+
+  @include respond-to('mobile') {
+    margin: 1rem $spacing-sm;
   }
 }
 

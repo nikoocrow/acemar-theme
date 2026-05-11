@@ -191,9 +191,44 @@ h6 {
 p {
   font-family: "Tenor Sans", sans-serif;
   margin-bottom: 1rem;
+  margin: 1rem 5rem;
 }
 p:last-child {
-  margin-bottom: 0;
+  margin: 20px 50px;
+}
+
+.wp-block-paragraph {
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .wp-block-paragraph {
+    padding: 0 1.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .wp-block-paragraph {
+    padding: 0 1rem;
+  }
+}
+
+.wp-block-image {
+  margin: 1rem 5rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.wp-block-image img {
+  border-radius: 16px;
+}
+@media (max-width: 768px) {
+  .wp-block-image {
+    margin: 1rem 1.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .wp-block-image {
+    margin: 1rem 1rem;
+  }
 }
 
 strong,
