@@ -21,4 +21,7 @@ yarn-error.log*
 
 # Temporary files
 *.tmp
-*.temp.claude/
+*.temp
+
+# Personal Claude Code preferences (private, not shared)
+CLAUDE.local.md

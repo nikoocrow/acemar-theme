@@ -58,6 +58,7 @@ require_once get_template_directory() . '/inc/custom-post-types.php';
 function acemar_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+    add_theme_support('align-wide');
     add_theme_support('html5', array(
         'search-form',
         'comment-form',
@@ -217,3 +218,33 @@ add_filter('acf/load_value/name=estilo_de_header', function( $value, $post_id, $
     }
     return $value;
 }, 10, 3);
+
+// ============================================================
+// OPTIMIZACIÓN DE IMÁGENES AL SUBIR
+// ============================================================
+function acemar_optimize_uploaded_image( $file ) {
+    if ( ! in_array( $file['type'], array( 'image/jpeg', 'image/png' ), true ) ) {
+        return $file;
+    }
+
+    $max_width = 2000; // px — redimensiona si la imagen es más ancha
+    $quality   = 82;   // 0-100, aplica a JPEG y PNG
+
+    $editor = wp_get_image_editor( $file['file'] );
+
+    if ( is_wp_error( $editor ) ) {
+        return $file;
+    }
+
+    $size = $editor->get_size();
+
+    if ( $size['width'] > $max_width ) {
+        $editor->resize( $max_width, null, false );
+    }
+
+    $editor->set_quality( $quality );
+    $editor->save( $file['file'] );
+
+    return $file;
+}
+add_filter( 'wp_handle_upload', 'acemar_optimize_uploaded_image' );

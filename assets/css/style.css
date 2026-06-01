@@ -1606,6 +1606,113 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   margin: 0;
 }
 
+.alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 576px) {
+  .alignleft {
+    float: none;
+    margin-right: 0;
+  }
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 576px) {
+  .alignright {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alignwide {
+  margin-left: -3rem;
+  margin-right: -3rem;
+  max-width: none;
+}
+@media (max-width: 768px) {
+  .alignwide {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+}
+
+.alignfull {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  max-width: 100vw;
+  width: 100vw;
+}
+
+.wp-block-embed {
+  margin: 1.5rem 0;
+}
+.wp-block-embed.aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-block-embed.alignleft {
+  max-width: 50%;
+}
+@media (max-width: 576px) {
+  .wp-block-embed.alignleft {
+    max-width: 100%;
+  }
+}
+.wp-block-embed.alignright {
+  max-width: 50%;
+}
+@media (max-width: 576px) {
+  .wp-block-embed.alignright {
+    max-width: 100%;
+  }
+}
+
+.wp-block-embed.is-type-video .wp-block-embed__wrapper,
+.wp-block-embed.wp-has-aspect-ratio .wp-block-embed__wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.wp-block-embed.is-type-video .wp-block-embed__wrapper iframe,
+.wp-block-embed.is-type-video .wp-block-embed__wrapper video,
+.wp-block-embed.is-type-video .wp-block-embed__wrapper object,
+.wp-block-embed.is-type-video .wp-block-embed__wrapper embed,
+.wp-block-embed.wp-has-aspect-ratio .wp-block-embed__wrapper iframe,
+.wp-block-embed.wp-has-aspect-ratio .wp-block-embed__wrapper video,
+.wp-block-embed.wp-has-aspect-ratio .wp-block-embed__wrapper object,
+.wp-block-embed.wp-has-aspect-ratio .wp-block-embed__wrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.wp-embed-aspect-16-9 .wp-block-embed__wrapper {
+  padding-top: 56.25%;
+}
+
+.wp-embed-aspect-4-3 .wp-block-embed__wrapper {
+  padding-top: 75%;
+}
+
+.wp-embed-aspect-21-9 .wp-block-embed__wrapper {
+  padding-top: 42.857%;
+}
+
 .blog-hero {
   position: relative;
   height: 400px;
