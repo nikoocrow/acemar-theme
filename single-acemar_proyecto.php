@@ -73,17 +73,19 @@ for ( $i = 1; $i <= 6; $i++ ) {
 
             <?php if ( $dato_1 || $dato_2 || $dato_3 || $dato_4 ) : ?>
                 <ul class="proyecto-info__datos">
-                    <?php if ( $dato_1 ) : ?><li><?php echo esc_html( $dato_1 ); ?></li><?php endif; ?>
-                    <?php if ( $dato_2 ) : ?><li><?php echo esc_html( $dato_2 ); ?></li><?php endif; ?>
-                    <?php if ( $dato_3 ) : ?><li><?php echo esc_html( $dato_3 ); ?></li><?php endif; ?>
-                    <?php if ( $dato_4 ) : ?><li><?php echo esc_html( $dato_4 ); ?></li><?php endif; ?>
+                    <?php if ( $dato_1 ) : ?>
+                        <li><span class="proyecto-dato__label">Producto</span><span class="proyecto-dato__valor"><?php echo esc_html( $dato_1 ); ?></span></li>
+                    <?php endif; ?>
+                    <?php if ( $dato_2 ) : ?>
+                        <li><span class="proyecto-dato__label">Especie</span><span class="proyecto-dato__valor"><?php echo esc_html( $dato_2 ); ?></span></li>
+                    <?php endif; ?>
+                    <?php if ( $dato_3 ) : ?>
+                        <li><span class="proyecto-dato__label">Cliente</span><span class="proyecto-dato__valor"><?php echo esc_html( $dato_3 ); ?></span></li>
+                    <?php endif; ?>
+                    <?php if ( $dato_4 ) : ?>
+                        <li><span class="proyecto-dato__label">Ciudad</span><span class="proyecto-dato__valor"><?php echo esc_html( $dato_4 ); ?></span></li>
+                    <?php endif; ?>
                 </ul>
-            <?php endif; ?>
-
-            <?php if ( $contenido ) : ?>
-                <div class="proyecto-info__descripcion">
-                    <?php echo wp_kses_post( $contenido ); ?>
-                </div>
             <?php endif; ?>
 
             <div class="proyecto-info__tags">
@@ -103,6 +105,13 @@ for ( $i = 1; $i <= 6; $i++ ) {
 
         </div>
     </div>
+
+    <?php if ( $contenido ) : ?>
+        <div class="proyecto-info__descripcion">
+            <?php echo wp_kses_post( $contenido ); ?>
+        </div>
+    <?php endif; ?>
+
 </section>
 
 
@@ -194,7 +203,8 @@ for ( $i = 1; $i <= 6; $i++ ) {
 <!-- RELACIONADOS -->
 <?php if ( $relacionados ) : ?>
 <section class="proyecto-relacionados">
-    <div class="proyecto-relacionados__inner">
+    <p class="proyecto-relacionados__titulo">Otros proyectos que podrían interesarte</p>
+    <div class="proyecto-relacionados__inner<?php echo count( $relacionados ) === 1 ? ' proyecto-relacionados__inner--solo' : ''; ?>">
         <?php foreach ( $relacionados as $rel ) :
             $rel_img   = get_the_post_thumbnail_url( $rel->ID, 'large' );
             $rel_title = get_the_title( $rel );
@@ -209,7 +219,6 @@ for ( $i = 1; $i <= 6; $i++ ) {
                         <span class="proyecto-relacionado-card__name"><?php echo esc_html( $rel_title ); ?></span>
                     </div>
                 </a>
-                <p class="proyecto-relacionado-card__label">Otro proyecto que podría interesarte</p>
             </article>
         <?php endforeach; ?>
     </div>

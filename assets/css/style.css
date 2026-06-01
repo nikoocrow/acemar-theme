@@ -2523,13 +2523,17 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 }
 .proyecto-hero__titulo {
   font-family: "Italiana", serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(32px, 5vw, 56px);
   color: #fff;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   line-height: 1.15;
   margin: 0;
+  padding-bottom: 0;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.proyecto-hero__titulo::after {
+  display: none;
 }
 
 .proyecto-info {
@@ -2575,11 +2579,13 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   padding: 0;
 }
 .proyecto-info__datos li {
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #1A1A1A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  gap: 10px;
   padding: 10px 0;
   border-bottom: 1px solid #E8E4DE;
 }
@@ -2587,11 +2593,12 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   border-top: 1px solid #E8E4DE;
 }
 .proyecto-info__descripcion {
+  max-width: 780px;
+  margin: 48px auto 0;
   font-family: "Tenor Sans", sans-serif;
   font-size: 0.95rem;
   color: #4A4A4A;
   line-height: 1.8;
-  margin-bottom: 32px;
 }
 .proyecto-info__descripcion p {
   margin: 0 0 1em;
@@ -2606,6 +2613,27 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.proyecto-dato__label {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C8A96E;
+  white-space: nowrap;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+.proyecto-dato__label::after {
+  content: ":";
+}
+.proyecto-dato__valor {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1A1A1A;
 }
 
 .proyecto-tag {
@@ -2852,27 +2880,38 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 
 .proyecto-relacionados {
   padding: 40px 20px 80px;
+  text-align: center;
 }
 @media (min-width: 768px) {
   .proyecto-relacionados {
     padding: 40px 40px 100px;
   }
 }
+.proyecto-relacionados__titulo {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4A4A4A;
+  margin: 0 0 32px;
+}
 .proyecto-relacionados__inner {
-  max-width: 1100px;
+  max-width: 860px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
-@media (min-width: 640px) {
-  .proyecto-relacionados__inner {
-    grid-template-columns: 1fr 1fr;
-  }
+.proyecto-relacionados__inner--solo {
+  max-width: 430px;
 }
 
+.proyecto-relacionado-card {
+  width: 100%;
+}
 .proyecto-relacionado-card__link {
   display: block;
+  width: 100%;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
