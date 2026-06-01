@@ -25,7 +25,7 @@ while ( have_posts() ) :
     $dato_4  = get_field( 'proyecto_dato_4' );
    // Construir galería desde campos individuales
 $galeria = [];
-for ( $i = 1; $i <= 6; $i++ ) {
+for ( $i = 1; $i <= 10; $i++ ) {
     $img = get_field( 'proyecto_galeria_' . $i );
     if ( $img ) {
         $galeria[] = $img;
