@@ -382,7 +382,7 @@ i {
 .top-bar {
   position: relative;
   width: 100%;
-  background-color: #303131;
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -697,11 +697,12 @@ i {
 
 #top-bar.top-bar-sticky,
 div#top-bar.top-bar-sticky {
-  background-color: #ffffff !important;
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 #top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a,
 div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a {
-  color: rgba(26, 26, 26, 0.75) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 #top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a::after,
 div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a::after {
@@ -738,16 +739,16 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   }
 }
 .top-bar--transparent {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
 }
 .top-bar--transparent .top-bar__nav #top-bar-menu li a {
-  color: #000000;
+  color: rgba(255, 255, 255, 0.85);
 }
 .top-bar--transparent .top-bar__nav #top-bar-menu li a::after {
   background-color: #F4C430;
 }
 .top-bar--transparent .top-bar__nav #top-bar-menu li a:hover {
-  color: #000000;
+  color: #F4C430;
 }
 @media (max-width: 1024px) {
   .top-bar--transparent {
@@ -764,10 +765,10 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   }
 }
 .top-bar--transparent.top-bar-sticky {
-  background-color: #ffffff !important;
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
 }
 .top-bar--transparent.top-bar-sticky #top-bar-menu li a {
-  color: rgba(26, 26, 26, 0.75) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 .top-bar--transparent.top-bar-sticky #top-bar-menu li a::after {
   background-color: #F4C430;
@@ -787,7 +788,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   z-index: 200;
 }
 .site-header .header-inner {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: -webkit-box;

@@ -6,7 +6,9 @@
 .top-bar {
     position: relative;
     width: 100%;
-    background-color: #303131;
+    // Transparente con overlay negro — la opacidad viene del campo ACF
+    // top_bar_overlay vía --top-bar-overlay (inline en template-parts/top-bar.php)
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -248,15 +250,17 @@
     animation: topBarSlideDown 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-// Fondo blanco + links oscuros al hacer scroll
+// Overlay oscuro al hacer scroll — la opacidad viene del campo ACF
+// top_bar_overlay vía --top-bar-overlay (inline en template-parts/top-bar.php)
 #top-bar.top-bar-sticky,
 div#top-bar.top-bar-sticky {
-    background-color: #ffffff !important;
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
     .top-bar__nav #top-bar-menu li a {
-        color: rgba(#1a1a1a, 0.75) !important;
+        color: rgba($color-white, 0.85) !important;
 
-        // Línea amarilla sigue funcionando sobre fondo blanco
+        // Línea amarilla sigue funcionando sobre fondo oscuro
         &::after {
             background-color: $color-primary;
         }
@@ -283,24 +287,21 @@ div#top-bar.top-bar-sticky {
 // ============================================
 
 .top-bar--transparent {
-    background-color: transparent;
-
-    // Al abrir el nav en desktop, el fondo del nav también transparente
-    .top-bar__nav {
-        // El nav slide desde la derecha no necesita fondo propio
-    }
+    // Mismo overlay oscuro que la barra base — antes era transparent con
+    // links negros, que sobre páginas blancas se veía como barra blanca
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
 
     // Especificidad alta para pisar el color base rgba(white, 0.8)
     .top-bar__nav #top-bar-menu {
         li a {
-            color: $color-secondary; // negro
+            color: rgba($color-white, 0.85);
 
             &::after {
                 background-color: $color-primary; // dorado
             }
 
             &:hover {
-                color: $color-secondary;
+                color: $color-primary;
             }
         }
     }
@@ -328,10 +329,10 @@ div#top-bar.top-bar-sticky {
     // Al hacer sticky pierde la transparencia — JS ya maneja esto,
     // pero por si acaso lo forzamos también en CSS
     &.top-bar-sticky {
-        background-color: #ffffff !important;
+        background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
 
         #top-bar-menu li a {
-            color: rgba(#1a1a1a, 0.75) !important;
+            color: rgba($color-white, 0.85) !important;
 
             &::after {
                 background-color: $color-primary;

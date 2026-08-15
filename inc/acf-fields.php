@@ -322,6 +322,55 @@ if (function_exists('acf_add_local_field_group')) {
     ));
 }
 
+if (function_exists('acf_add_local_field_group')) {
+
+    /**
+     * Top Bar — Overlay oscuro
+     * Grupo propio (no se puede inyectar el campo dentro de "Header
+     * Settings" porque ese grupo vive en la BD del admin de ACF).
+     * Mismas ubicaciones que Header Settings para que aparezca justo
+     * debajo de la opción "Estilo de Header".
+     */
+    acf_add_local_field_group(array(
+        'key'    => 'group_top_bar_settings',
+        'title'  => 'Top Bar — Overlay oscuro',
+        'fields' => array(
+            array(
+                'key'           => 'field_top_bar_overlay',
+                'label'         => 'Opacidad del overlay',
+                'name'          => 'top_bar_overlay',
+                'type'          => 'range',
+                'instructions'  => 'Opacidad del fondo negro del menú auxiliar (top bar). 0 = transparente total, 100 = negro sólido.',
+                'min'           => 0,
+                'max'           => 100,
+                'step'          => 5,
+                'default_value' => 60,
+                'append'        => '%',
+            ),
+        ),
+        'location' => array(
+            array(array(
+                'param'    => 'post_type',
+                'operator' => '==',
+                'value'    => 'page',
+            )),
+            array(array(
+                'param'    => 'page_template',
+                'operator' => '==',
+                'value'    => 'page-test-hero.php',
+            )),
+            array(array(
+                'param'    => 'post_type',
+                'operator' => '==',
+                'value'    => 'acemar_blog',
+            )),
+        ),
+        'position'   => 'normal',
+        'menu_order' => 1,
+        'active'     => true,
+    ));
+}
+
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page(array(
         'page_title'  => 'Configuración del Blog',
