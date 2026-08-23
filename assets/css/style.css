@@ -231,6 +231,81 @@ p:last-child {
   }
 }
 
+ul.wp-block-list,
+.entry-content > ul,
+.entry-content ul.wp-block-list {
+  list-style: disc;
+}
+ul.wp-block-list ul,
+.entry-content > ul ul,
+.entry-content ul.wp-block-list ul {
+  list-style: circle;
+}
+
+ol.wp-block-list,
+.entry-content > ol,
+.entry-content ol.wp-block-list {
+  list-style: decimal;
+}
+ol.wp-block-list ol,
+.entry-content > ol ol,
+.entry-content ol.wp-block-list ol {
+  list-style: lower-alpha;
+}
+
+ul.wp-block-list,
+ol.wp-block-list,
+.entry-content > ul,
+.entry-content > ol {
+  margin: 1rem 5rem;
+  padding-left: 4rem;
+}
+@media (max-width: 768px) {
+  ul.wp-block-list,
+  ol.wp-block-list,
+  .entry-content > ul,
+  .entry-content > ol {
+    padding-left: 2.5rem;
+  }
+}
+@media (max-width: 576px) {
+  ul.wp-block-list,
+  ol.wp-block-list,
+  .entry-content > ul,
+  .entry-content > ol {
+    padding-left: 1.5rem;
+  }
+}
+ul.wp-block-list li,
+ol.wp-block-list li,
+.entry-content > ul li,
+.entry-content > ol li {
+  margin-bottom: 0.5rem;
+}
+ul.wp-block-list li p,
+ol.wp-block-list li p,
+.entry-content > ul li p,
+.entry-content > ol li p {
+  margin: 0 0 0.5rem;
+}
+ul.wp-block-list li p:last-child,
+ol.wp-block-list li p:last-child,
+.entry-content > ul li p:last-child,
+.entry-content > ol li p:last-child {
+  margin: 0;
+}
+ul.wp-block-list ul,
+ul.wp-block-list ol,
+ol.wp-block-list ul,
+ol.wp-block-list ol,
+.entry-content > ul ul,
+.entry-content > ul ol,
+.entry-content > ol ul,
+.entry-content > ol ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.5rem;
+}
+
 strong,
 b {
   font-weight: 700;

@@ -109,6 +109,63 @@ p {
   }
 }
 
+// Listas de contenido (bloque Lista de Gutenberg / entry-content)
+// El reset global quita list-style y padding; aquí se restauran solo
+// dentro del contenido para no afectar menús, footer ni componentes.
+ul.wp-block-list,
+.entry-content > ul,
+.entry-content ul.wp-block-list {
+  list-style: disc;
+
+  ul { list-style: circle; }
+}
+
+ol.wp-block-list,
+.entry-content > ol,
+.entry-content ol.wp-block-list {
+  list-style: decimal;
+
+  ol { list-style: lower-alpha; }
+}
+
+ul.wp-block-list,
+ol.wp-block-list,
+.entry-content > ul,
+.entry-content > ol {
+  // Mismo modelo de caja que los párrafos (margen global de p +
+  // padding de .wp-block-paragraph) más una sangría interna moderada
+  margin: 1rem 5rem;
+  padding-left: $spacing-xl + $spacing-sm;
+
+  @include respond-to('tablet') {
+    padding-left: $spacing-md + $spacing-sm;
+  }
+
+  @include respond-to('mobile') {
+    padding-left: $spacing-sm + $spacing-xs;
+  }
+
+  li {
+    margin-bottom: $spacing-xs;
+
+    // Anula el margen global de p para que no desajuste los ítems
+    p {
+      margin: 0 0 $spacing-xs;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  // Listas anidadas: sin margen lateral extra, solo sangría
+  ul,
+  ol {
+    margin: $spacing-xs 0 0;
+    padding-left: $spacing-md;
+  }
+}
+
 // Strong and emphasis
 strong,
 b {
