@@ -51,6 +51,7 @@ if ( acemar_check_acf_dependency() ) {
     require_once get_template_directory() . '/inc/acf-fields.php';
 }
 require_once get_template_directory() . '/inc/custom-post-types.php';
+require_once get_template_directory() . '/inc/block-alignment.php';
 
 // ============================================================
 // THEME SETUP
