@@ -78,6 +78,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
+        gap: $spacing-xs; // se suma al padding lateral de cada item
         list-style: none;
         margin: 0;
         padding: 0;
@@ -130,6 +131,34 @@
                 }
             }
         }
+
+        // Solo los items de primer nivel en mayúsculas
+        // Sin encoger: cada item conserva el ancho de su texto
+        > li {
+            flex-shrink: 0;
+        }
+
+        > li > a {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            font-size: 0.9375rem; // 15px
+
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+
+            // nowrap evita cortes automáticos: las dos líneas las define el
+            // <br> que inserta acemar_menu_split_title() en functions.php,
+            // así la caja mide exactamente la línea más larga.
+            white-space: nowrap;
+            line-height: 1.25;
+
+            // La línea sigue el ancho del texto, no el de la caja con padding
+            &::after {
+                left: 0.75rem;
+                right: 0.75rem;
+            }
+        }
     }
 }
 
@@ -140,34 +169,48 @@
 @include respond-to(nav) {
 
     .main-navigation {
-        position: absolute;
-        top: 100%;
+        // Overlay a pantalla completa
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh; // descuenta la barra del navegador en iOS/Android
         background-color: $color-white;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        overflow: hidden;
+        box-shadow: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         z-index: 150;
-        max-height: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-content: safe center; // evita recortar arriba si no entra
+
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transform: translateY(-8px);
         transition:
-            max-height 0.45s cubic-bezier(0.23, 1, 0.32, 1),
             opacity 0.35s ease,
-            transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            visibility 0s linear 0.35s;
 
         &.nav-open {
-            max-height: 600px;
             opacity: 1;
+            visibility: visible;
             pointer-events: auto;
-            transform: translateY(0);
+            transition:
+                opacity 0.35s ease,
+                visibility 0s linear 0s;
         }
 
         #primary-menu {
             flex-direction: column;
+            justify-content: center;
             gap: 0;
-            padding: $spacing-sm 0 $spacing-md;
+            // Aire arriba para no quedar debajo de la top-bar ni del logo
+            padding: 7rem $spacing-md 3rem;
             text-align: center;
 
             ul {
@@ -194,7 +237,7 @@
                     display: block;
                     width: 100%;
                     padding: 0.875rem $spacing-md;
-                    font-size: 1rem;
+                    font-size: 0.9375rem; // 15px
                     border-bottom: 1px solid rgba($color-secondary, 0.07);
                     color: $color-secondary;
 
@@ -225,6 +268,12 @@
         flex-direction: row !important;
         gap: 0 !important;
         text-align: left !important;
+    }
+
+    // El overlay tapa el header: logo y botón X se elevan por encima
+    .site-branding {
+        position: relative;
+        z-index: 160;
     }
 }
 
@@ -318,13 +367,12 @@
 
     .main-navigation {
         #primary-menu {
-            gap: $spacing-sm;
+            gap: $spacing-md;
 
-            li a {
-                font-size: 0.875rem;
+            > li > a {
+                font-size: 0.9375rem; // 15px
                 padding: 0.25rem 0.75rem;
 
-                // Ajustar el offset de la línea al padding más chico
                 &::after {
                     left: 0.75rem;
                     right: 0.75rem;
@@ -335,7 +383,7 @@
                 gap: $spacing-sm;
 
                 li a {
-                    font-size: 0.875rem;
+                    font-size: 0.9375rem; // 15px
                     padding: 0.25rem 0.75rem;
 
                     &::after {
@@ -447,12 +495,17 @@
 
             // Flecha SVG inline via CSS
             > a {
-                padding-right: 1.75rem; // espacio para la flecha
+                padding-right: 1.75rem; // padding lateral + espacio para la flecha
+
+                // La línea sigue el ancho del texto, sin pasar por debajo de la flecha
+                &::after {
+                    right: 1.75rem;
+                }
 
                 &::before {
                     content: '';
                     position: absolute;
-                    right: 0.5rem;
+                    right: 0.75rem;
                     top: 50%;
                     transform: translateY(-50%) rotate(0deg);
                     width: 10px;

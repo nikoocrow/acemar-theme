@@ -214,3 +214,75 @@ function acemar_optimize_uploaded_image( $file ) {
     return $file;
 }
 add_filter( 'wp_handle_upload', 'acemar_optimize_uploaded_image' );
+// ============================================================
+// MENÚ PRINCIPAL: partir las etiquetas en dos líneas
+// ============================================================
+// CSS no puede decidir dónde cortar un texto, así que el corte se resuelve
+// acá insertando un <br>. Garantiza exactamente dos líneas (el CSS usa
+// white-space: nowrap, así que no hay cortes adicionales) y permite que la
+// caja del link mida exactamente la línea más larga, sin aire sobrante.
+//
+// Dos modos:
+//   1. Manual  — un "|" en la etiqueta define el punto exacto de corte.
+//                Ej: "PANELES ACUSTICOS | DOMUS®"
+//   2. Automático — sin "|", corta en el punto que deja las dos líneas
+//                más parejas en cantidad de caracteres.
+//
+// Sólo aplica al menú primario, primer nivel. Los items de una sola palabra
+// quedan intactos.
+function acemar_menu_split_title( $title, $item, $args, $depth ) {
+    if ( 0 !== $depth ) {
+        return $title;
+    }
+
+    if ( ! isset( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+        return $title;
+    }
+
+    // El filtro 'the_title' ya corrió, así que la etiqueta puede traer
+    // entidades (&amp;, &#174;). Se decodifican antes de partir y se vuelven
+    // a escapar al final; sin esto, esc_html() escaparía dos veces.
+    $clean = trim( html_entity_decode( wp_strip_all_tags( $title ), ENT_QUOTES, 'UTF-8' ) );
+
+    if ( '' === $clean ) {
+        return $title;
+    }
+
+    // Modo manual: el "|" manda
+    if ( false !== strpos( $clean, '|' ) ) {
+        $parts = array_map( 'trim', explode( '|', $clean, 2 ) );
+
+        if ( '' === $parts[0] || '' === $parts[1] ) {
+            return esc_html( str_replace( '|', '', $clean ) );
+        }
+
+        return esc_html( $parts[0] ) . '<br>' . esc_html( $parts[1] );
+    }
+
+    // Modo automático
+    $words = preg_split( '/\s+/u', $clean, -1, PREG_SPLIT_NO_EMPTY );
+
+    if ( ! is_array( $words ) || count( $words ) < 2 ) {
+        return $title;
+    }
+
+    $total     = count( $words );
+    $best      = 1;
+    $best_diff = null;
+
+    for ( $i = 1; $i < $total; $i++ ) {
+        $first  = implode( ' ', array_slice( $words, 0, $i ) );
+        $second = implode( ' ', array_slice( $words, $i ) );
+        $diff   = abs( mb_strlen( $first ) - mb_strlen( $second ) );
+
+        if ( null === $best_diff || $diff < $best_diff ) {
+            $best_diff = $diff;
+            $best      = $i;
+        }
+    }
+
+    return esc_html( implode( ' ', array_slice( $words, 0, $best ) ) )
+        . '<br>'
+        . esc_html( implode( ' ', array_slice( $words, $best ) ) );
+}
+add_filter( 'nav_menu_item_title', 'acemar_menu_split_title', 10, 4 );
