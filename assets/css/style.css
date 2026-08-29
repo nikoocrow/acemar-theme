@@ -457,7 +457,9 @@ i {
 .top-bar {
   position: relative;
   width: 100%;
-  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0));
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -630,7 +632,7 @@ i {
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    background-color: #1f2020;
+    background-color: transparent;
     padding: 0.5rem 0;
   }
 }
@@ -760,6 +762,10 @@ i {
   }
 }
 
+.hero-page {
+  padding-top: var(--hero-top-offset, 0px);
+}
+
 .top-bar-sticky {
   position: fixed !important;
   top: 0;
@@ -772,8 +778,7 @@ i {
 
 #top-bar.top-bar-sticky,
 div#top-bar.top-bar-sticky {
-  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay-scroll, 0.92)) !important;
 }
 #top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a,
 div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a {
@@ -814,7 +819,11 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   }
 }
 .top-bar--transparent {
-  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .top-bar--transparent .top-bar__nav #top-bar-menu li a {
   color: rgba(255, 255, 255, 0.85);
@@ -827,10 +836,10 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 }
 @media (max-width: 1024px) {
   .top-bar--transparent {
-    background-color: rgba(31, 32, 32, 0.97);
+    background-color: transparent;
   }
   .top-bar--transparent .top-bar__nav.nav-open {
-    background-color: rgba(31, 32, 32, 0.97);
+    background-color: transparent;
   }
   .top-bar--transparent .top-bar__nav #top-bar-menu li a {
     color: rgba(255, 204, 0, 0.85);
@@ -840,7 +849,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   }
 }
 .top-bar--transparent.top-bar-sticky {
-  background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
+  background-color: rgba(0, 0, 0, var(--top-bar-overlay-scroll, 0.92)) !important;
 }
 .top-bar--transparent.top-bar-sticky #top-bar-menu li a {
   color: rgba(255, 255, 255, 0.85) !important;

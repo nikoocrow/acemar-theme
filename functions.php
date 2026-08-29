@@ -47,6 +47,7 @@ function acemar_check_acf_dependency() {
 // AUTO-LOADER: orden explícito para garantizar dependencias
 // ============================================================
 require_once get_template_directory() . '/inc/footer-options.php';
+require_once get_template_directory() . '/inc/theme-options.php';
 if ( acemar_check_acf_dependency() ) {
     require_once get_template_directory() . '/inc/acf-fields.php';
 }
@@ -129,8 +130,9 @@ function acemar_enqueue_assets() {
         );
 
         wp_localize_script('acemar-blog-script', 'acemarBlog', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce'   => wp_create_nonce('acemar_blog_nonce'),
+            'ajaxUrl'      => admin_url('admin-ajax.php'),
+            'nonce'        => wp_create_nonce('acemar_blog_nonce'),
+            'loadMoreText' => get_theme_mod('blog_load_more_text', 'Ver más'),
         ));
     }
 
@@ -172,45 +174,8 @@ add_action('wp_head', 'acemar_google_fonts_preconnect', 1);
 // ============================================================
 // CUSTOMIZER: Blog Settings
 // ============================================================
-function acemar_blog_customizer($wp_customize) {
-    $wp_customize->add_section('acemar_blog_section', array(
-        'title'    => __('Blog Settings', 'acemar'),
-        'priority' => 30,
-    ));
-
-    $wp_customize->add_setting('blog_hero_image');
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'blog_hero_image', array(
-        'label'    => __('Imagen Hero del Blog', 'acemar'),
-        'section'  => 'acemar_blog_section',
-        'settings' => 'blog_hero_image',
-    )));
-
-    $wp_customize->add_setting('blog_hero_title', array(
-        'default'           => 'BLOG',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control('blog_hero_title', array(
-        'label'   => __('Título Hero', 'acemar'),
-        'section' => 'acemar_blog_section',
-        'type'    => 'text',
-    ));
-
-    $wp_customize->add_setting('blog_header_style', array(
-        'default'           => 'transparent',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control('blog_header_style', array(
-        'label'   => __('Estilo de Header', 'acemar'),
-        'section' => 'acemar_blog_section',
-        'type'    => 'select',
-        'choices' => array(
-            'normal'      => __('Header Normal', 'acemar'),
-            'transparent' => __('Header Transparente', 'acemar'),
-            'minimal'     => __('Header Minimalista', 'acemar'),
-        ),
-    ));
-}
-add_action('customize_register', 'acemar_blog_customizer');
+// La sección "Blog" del Customizer vive ahora en inc/theme-options.php,
+// dentro del panel "Opciones del Tema" junto al resto de ajustes globales.
 
 // Forzar header transparente en single proyecto
 add_filter('acf/load_value/name=estilo_de_header', function( $value, $post_id, $field ) {

@@ -79,7 +79,7 @@
                     alert('Error al cargar más posts. Por favor intenta de nuevo.');
                 },
                 complete: function() {
-                    $button.removeClass('loading').text('Ver más');
+                    $button.removeClass('loading').text(acemarBlog.loadMoreText || 'Ver más');
                 }
             });
         });

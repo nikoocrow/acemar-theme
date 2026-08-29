@@ -6,9 +6,12 @@
 .top-bar {
     position: relative;
     width: 100%;
-    // Transparente con overlay negro — la opacidad viene del campo ACF
-    // top_bar_overlay vía --top-bar-overlay (inline en template-parts/top-bar.php)
-    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
+    // Sin color propio: 100% transparente. Lo único que puede oscurecerla es
+    // el overlay global del tema vía --top-bar-overlay (inline en
+    // template-parts/top-bar.php, desde Customizer → Top Bar).
+    // Sin valor → 0 = transparente.
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0));
+    transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -150,7 +153,7 @@
             @include respond-to(nav) {
                 flex-direction: column;
                 width: 100%;
-                background-color: #1f2020;
+                background-color: transparent;
                 padding: $spacing-xs 0;
             }
 
@@ -238,6 +241,16 @@
 }
 
 // ============================================
+// Hero por detrás de la top-bar
+// ============================================
+// Con .top-bar--transparent la barra sale del flujo, así que el hero arranca
+// en y=0 y pasa por detrás. --hero-top-offset permite bajarlo si se quiere
+// aire entre la barra y la imagen (default 0 = el hero llega hasta arriba).
+.hero-page {
+    padding-top: var(--hero-top-offset, 0px);
+}
+
+// ============================================
 // Top Bar Sticky (scroll - solo desktop)
 // ============================================
 
@@ -250,12 +263,11 @@
     animation: topBarSlideDown 0.35s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-// Overlay oscuro al hacer scroll — la opacidad viene del campo ACF
-// top_bar_overlay vía --top-bar-overlay (inline en template-parts/top-bar.php)
+// Al hacer sticky tampoco gana color propio, pero el overlay se oscurece hasta
+// casi negro — valor propio desde Customizer → Top Bar
 #top-bar.top-bar-sticky,
 div#top-bar.top-bar-sticky {
-    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay-scroll, 0.92)) !important;
 
     .top-bar__nav #top-bar-menu li a {
         color: rgba($color-white, 0.85) !important;
@@ -287,9 +299,16 @@ div#top-bar.top-bar-sticky {
 // ============================================
 
 .top-bar--transparent {
-    // Mismo overlay oscuro que la barra base — antes era transparent con
-    // links negros, que sobre páginas blancas se veía como barra blanca
-    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6));
+    // Igual que la barra base: sin color, sólo el overlay ACF
+    background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0));
+
+    // Se saca del flujo para que el hero arranque en y=0 y pase por detrás.
+    // Sólo en modo header transparente; en el resto de páginas la barra sigue
+    // ocupando sus 40px en el flujo normal.
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
     // Especificidad alta para pisar el color base rgba(white, 0.8)
     .top-bar__nav #top-bar-menu {
@@ -306,17 +325,16 @@ div#top-bar.top-bar-sticky {
         }
     }
 
-    // Mobile: el dropdown sí necesita fondo para ser legible
+    // Mobile: el dropdown también queda sin fondo propio
     @include respond-to(nav) {
-        background-color: rgba(#1f2020, 0.97);
+        background-color: transparent;
 
         .top-bar__nav {
             &.nav-open {
-                background-color: rgba(#1f2020, 0.97);
+                background-color: transparent;
             }
         }
 
-        // Fondo gris oscuro en mobile → links deben ser legibles
         .top-bar__nav #top-bar-menu li a {
             color: rgba(#FFCC00, 0.85);
 
@@ -329,7 +347,7 @@ div#top-bar.top-bar-sticky {
     // Al hacer sticky pierde la transparencia — JS ya maneja esto,
     // pero por si acaso lo forzamos también en CSS
     &.top-bar-sticky {
-        background-color: rgba(0, 0, 0, var(--top-bar-overlay, 0.6)) !important;
+        background-color: rgba(0, 0, 0, var(--top-bar-overlay-scroll, 0.92)) !important;
 
         #top-bar-menu li a {
             color: rgba($color-white, 0.85) !important;

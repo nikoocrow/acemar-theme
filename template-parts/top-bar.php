@@ -14,13 +14,15 @@ if ( $header_style === 'transparent' ) {
     $top_bar_class .= ' top-bar--transparent';
 }
 
-// Overlay oscuro del sticky, controlado desde ACF (0–100). En vistas sin el
-// grupo Header Settings el campo no existe → cae al 60%.
-$overlay = get_field('top_bar_overlay');
-$overlay = is_numeric( $overlay ) ? max( 0, min( 100, (int) $overlay ) ) : 60;
+// La barra no tiene color propio: es transparente y lo único que puede
+// oscurecerla es este overlay negro. Ajuste GLOBAL del tema, igual para todas
+// las páginas: Apariencia → Personalizar → Top Bar (inc/theme-options.php).
+// En reposo el default es 0 = transparente; al hacer scroll, 92 = casi negro.
+$overlay        = acemar_topbar_overlay_value( 'acemar_topbar_overlay', 0 );
+$overlay_scroll = acemar_topbar_overlay_value( 'acemar_topbar_overlay_scroll', 92 );
 ?>
 
-<div id="top-bar" class="<?php echo esc_attr( $top_bar_class ); ?>" style="--top-bar-overlay: <?php echo esc_attr( $overlay / 100 ); ?>;">
+<div id="top-bar" class="<?php echo esc_attr( $top_bar_class ); ?>" style="--top-bar-overlay: <?php echo esc_attr( $overlay ); ?>; --top-bar-overlay-scroll: <?php echo esc_attr( $overlay_scroll ); ?>;">
     <!-- Ícono "i" — siempre visible, trigger del menú -->
     <button class="top-bar__trigger" id="top-bar-trigger" aria-expanded="false" aria-controls="top-bar-nav" aria-label="<?php esc_attr_e('Abrir menú informativo', 'acemar'); ?>">
         <span class="top-bar__icon-wrap">

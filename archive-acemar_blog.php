@@ -40,7 +40,7 @@ get_header();
             
             foreach ($categories as $category) :
                 
-                $posts_per_category = 4;
+                $posts_per_category = (int) get_theme_mod('blog_posts_per_category', 4);
                 
                 $category_query = new WP_Query(array(
                     'post_type' => 'acemar_blog',
@@ -66,7 +66,7 @@ get_header();
                             
                             <?php if ($category_query->found_posts > $posts_per_category) : ?>
                                 <a href="<?php echo esc_url(get_term_link($category)); ?>" class="btn-ver-mas">
-                                    Ver más
+                                    <?php echo esc_html( get_theme_mod('blog_load_more_text', 'Ver más') ); ?>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
