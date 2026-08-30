@@ -303,14 +303,6 @@
                     color: $color-primary;
                 }
             }
-
-            ul li a {
-                color: $color-white;
-
-                &:hover {
-                    color: $color-primary;
-                }
-            }
         }
     }
 
@@ -449,14 +441,6 @@
     .main-navigation {
         #primary-menu {
             li a {
-                color: $color-white !important;
-
-                &:hover {
-                    color: $color-primary !important;
-                }
-            }
-
-            ul li a {
                 color: $color-white !important;
 
                 &:hover {

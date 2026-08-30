@@ -44,20 +44,31 @@ npm run build
 
 ```
 acemar-theme/
+├── src/
+│   └── scss/
+│       ├── base/
+│       │   ├── _variables.scss
+│       │   ├── _mixins.scss
+│       │   ├── _reset.scss
+│       │   └── _typography.scss
+│       ├── components/
+│       │   ├── _botones.scss
+│       │   └── _top-bar.scss
+│       ├── layout/
+│       │   ├── _header.scss
+│       │   ├── _footer.scss
+│       │   └── _blocks.scss
+│       ├── pages/
+│       │   ├── _blog.scss
+│       │   ├── _single-proyecto.scss
+│       │   └── _404.scss
+│       ├── utilities/
+│       │   └── _helpers.scss
+│       └── style.scss        ← entry point del build
 ├── assets/
-│   ├── scss/
-│   │   ├── base/
-│   │   │   ├── _variables.scss
-│   │   │   ├── _mixins.scss
-│   │   │   ├── _reset.scss
-│   │   │   └── _typography.scss
-│   │   ├── components/
-│   │   │   └── _botones.scss
-│   │   └── main.scss
-│   ├── css/ (generado)
+│   ├── css/                  (generado por Gulp)
 │   ├── js/
-│   │   └── main.js
-│   └── images/
+│   └── imagenes/
 ├── inc/
 ├── template-parts/
 ├── functions.php
@@ -67,23 +78,32 @@ acemar-theme/
 └── style.css
 ```
 
+> El SCSS vive en `src/scss/`, no en `assets/`. Gulp compila `src/scss/style.scss`
+> y escribe `assets/css/style.css` (+ `.min.css` y el sourcemap).
+
 ## Uso de componentes
 
 ### Botones
 
 ```html
-<!-- Botón default con borde amarillo -->
+<!-- Botón default: borde amarillo, fondo transparente -->
 <a href="#" class="btn">Solicite su muestra</a>
 
-<!-- Botón primario (fondo amarillo) -->
-<a href="#" class="btn btn-primary">Comprar ahora</a>
+<!-- Fondo amarillo sólido -->
+<a href="#" class="btn btn-solid">Comprar ahora</a>
 
-<!-- Botón para fondos oscuros -->
+<!-- Borde negro, se rellena en hover -->
+<a href="#" class="btn btn-secondary">Contactar</a>
+
+<!-- Para fondos oscuros -->
 <a href="#" class="btn btn-white">Ver más</a>
 
+<!-- Ancho completo -->
+<a href="#" class="btn btn-block">Enviar</a>
+
 <!-- Tamaños -->
-<a href="#" class="btn btn-lg">Botón grande</a>
-<a href="#" class="btn btn-sm">Botón pequeño</a>
+<a href="#" class="btn btn-large">Botón grande</a>
+<a href="#" class="btn btn-small">Botón pequeño</a>
 ```
 
 ### Headings
@@ -99,21 +119,30 @@ Los h1, h2 y h3 automáticamente tienen la línea decorativa amarilla centrada.
 <h2 class="heading-no-line">Título sin línea</h2>
 ```
 
+> **Nota:** `.btn-primary` y `.btn-outline` existen como alias pero no tienen
+> reglas propias — no declaran nada que `.btn` no tenga ya. El botón con fondo
+> amarillo de origen es `.btn-solid`.
+
 ## Personalización
 
 ### Colores
 
-Edita las variables en `assets/scss/base/_variables.scss`:
+Edita las variables en `src/scss/base/_variables.scss`:
 
 ```scss
 $color-primary: #F4C430;        // Amarillo dorado
-$color-secondary: #1a1a1a;      // Negro
+$color-secondary: #000000;      // Negro
 $color-white: #ffffff;
+$color-text: #333333;           // Cuerpo de texto
+$color-text-light: #666666;     // Texto secundario
+$color-background: #f9f9f9;     // Fondo alterno
 ```
 
 ### Tipografía
 
-Las fuentes se cargan desde Google Fonts. Puedes modificar los tamaños en `_variables.scss`.
+Las fuentes se cargan desde Google Fonts. Puedes modificar los tamaños en `src/scss/base/_variables.scss`.
+
+El inventario completo de color, tipografía y componentes está en [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md).
 
 ## Créditos
 

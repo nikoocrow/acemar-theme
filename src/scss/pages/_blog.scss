@@ -5,7 +5,7 @@
 // Variables específicas del blog
 $blog-overlay-color: rgba(0, 0, 0, 0.4);
 $blog-overlay-hover: rgba(0, 0, 0, 0.6);
-$blog-text-light: #ffffff;
+$blog-text-light: $color-white;
 $blog-transition: all 0.3s ease;
 
 // ============================================
@@ -288,7 +288,7 @@ $blog-transition: all 0.3s ease;
     }
     
     .card-title {
-        color: #F4C430;
+        color: $color-primary;
         font-size: 1.5rem;
         font-weight: 600;
         margin: 0 0 12px 0;
@@ -455,7 +455,7 @@ $blog-transition: all 0.3s ease;
         position: relative;
         padding: 20px;
         background: white;
-        color: #333;
+        color: $color-text;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -467,13 +467,13 @@ $blog-transition: all 0.3s ease;
     }
     
     .card-title {
-        color: #333;
+        color: $color-text;
         font-size: 1.1rem;
         margin-bottom: 8px;
     }
     
     .card-excerpt {
-        color: #666;
+        color: $color-text-light;
         font-size: 0.9rem;
         margin: 0;
         opacity: 1;  // Siempre visible
@@ -533,7 +533,7 @@ $blog-transition: all 0.3s ease;
         position: relative;
         padding: 30px;
         background: white;
-        color: #333;
+        color: $color-text;
         border-radius: 0 0 8px 8px;
         
         // Visible por defecto
@@ -542,13 +542,13 @@ $blog-transition: all 0.3s ease;
     }
     
     .card-title {
-        color: #333;
+        color: $color-text;
         font-size: 1.5rem;
         margin-bottom: 12px;
     }
     
     .card-excerpt {
-        color: #666;
+        color: $color-text-light;
         opacity: 1;
         margin: 0;
     }
@@ -662,7 +662,7 @@ $blog-transition: all 0.3s ease;
             margin: 0 auto;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #333;
+            color: $color-text;
             
             h2, h3, h4, h5, h6 {
                 margin-top: 2em;
@@ -692,7 +692,7 @@ $blog-transition: all 0.3s ease;
                 padding-left: 1.5em;
                 margin: 2em 0;
                 font-style: italic;
-                color: #666;
+                color: $color-text-light;
             }
         }
         
@@ -707,7 +707,7 @@ $blog-transition: all 0.3s ease;
     
     .related-posts {
         padding: 80px 0;
-        background: #f9f9f9;
+        background: $color-background;
         
         .section-title {
             text-align: center;
@@ -745,7 +745,7 @@ $blog-transition: all 0.3s ease;
             padding: 12px 24px;
             background: transparent;
             border: 2px solid #ddd;
-            color: #333;
+            color: $color-text;
             text-decoration: none;
             font-weight: 600;
             transition: $blog-transition;
@@ -781,6 +781,6 @@ $blog-transition: all 0.3s ease;
 .no-posts {
     text-align: center;
     padding: 80px 20px;
-    color: #666;
+    color: $color-text-light;
     font-size: 1.2rem;
 }

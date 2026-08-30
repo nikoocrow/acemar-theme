@@ -27,7 +27,7 @@
         position: relative;
 
         // Mobile: la barra sí toma color propio — negro sólido, sin overlay
-        background-color: #000;
+        background-color: $color-secondary;
     }
 
     // ----------------------------------------
@@ -128,7 +128,7 @@
             width: 100%;
             height: 100vh;
             height: 100dvh; // descuenta la barra del navegador en iOS/Android
-            background-color: #000;
+            background-color: $color-secondary;
             order: 3;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
@@ -348,11 +348,11 @@ div#top-bar.top-bar-sticky {
 
     // Mobile: la variante transparente también va en negro sólido
     @include respond-to(nav) {
-        background-color: #000;
+        background-color: $color-secondary;
 
         .top-bar__nav {
             &.nav-open {
-                background-color: #000;
+                background-color: $color-secondary;
             }
         }
 

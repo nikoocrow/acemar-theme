@@ -41,7 +41,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &__titulo {
         font-family: 'Italiana', serif;
         font-size: clamp(32px, 5vw, 56px);
-        color: #fff;
+        color: $color-white;
         letter-spacing: 0.04em;
         text-transform: uppercase;
         line-height: 1.15;
@@ -192,7 +192,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: 44px;
     border-radius: 50%;
     border: 1.5px solid #D9D4CC;
-    background: #fff;
+    background: $color-white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,7 +200,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $dark;
     transition: border-color $transition, background $transition, color $transition;
 
-    &:hover { border-color: $accent; background: $accent; color: #fff; }
+    &:hover { border-color: $accent; background: $accent; color: $color-white; }
 
     &.splide__arrow {
         position: static;
@@ -276,7 +276,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-radius: 50%;
         border: 1.5px solid rgba(255,255,255,0.3);
         background: transparent;
-        color: #fff;
+        color: $color-white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -296,7 +296,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border-radius: 50%;
         border: 1.5px solid rgba(255,255,255,0.3);
         background: transparent;
-        color: #fff;
+        color: $color-white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -397,7 +397,7 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &__name {
         font-family: 'Italiana', serif;
         font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-        color: #fff;
+        color: $color-white;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         line-height: 1.3;

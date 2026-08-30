@@ -28,6 +28,7 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/blocks';
+@import 'layout/content-width';
 @import 'pages/blog';
 
 // Single Proyecto
@@ -35,3 +36,18 @@
 
 // Página 404
 @import 'pages/404';
+
+// Utilidades — al final para que ganen en la cascada
+@import 'utilities/helpers';
+
+// ============================================
+// Parciales excluidos a proposito — NO importar sin revisar:
+//
+//   layout/_navigation.scss  Version antigua de la navegacion. Define
+//     .main-navigation y .menu-toggle, que hoy vienen de layout/_header.scss.
+//     Importarlo pisa el header actual.
+//
+//   layout/_hero.scss  Estilos de .hero-page, usada por template-hero-home.php.
+//     Nunca se ha compilado: importarlo cambia como se ve esa plantilla.
+//     Pendiente de decidir si se recupera o se elimina.
+// ============================================

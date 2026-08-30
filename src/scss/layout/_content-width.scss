@@ -1,0 +1,60 @@
+// ============================================
+// Ancho del contenido editable
+// ============================================
+// Regla general: los bloques por defecto de Gutenberg se limitan a
+// $content-max-width y se centran. Los bloques del plugin Acemar
+// (wp-block-acemar-*) quedan a ancho completo, salvo el de testimonios.
+//
+// Se aplica a los dos contenedores donde el tema vuelca the_content():
+//   .entry-content  page.php, single.php, index.php
+//   .hero-page      template-hero-home.php, que imprime los bloques
+//                   directamente dentro de <main> sin envoltorio propio
+//
+// No cubre single-acemar_blog.php: la entrada de blog tiene su propio sistema
+// de ancho en pages/_blog.scss (.single-blog-content .content-wrapper).
+//
+// El selector usa :where() a proposito: mantiene la especificidad en (0,1,0)
+// para que las reglas de cada bloque —listas, imagenes, estilos del plugin—
+// puedan ajustar su propio padding sin pelear con esta.
+
+.entry-content,
+.hero-page {
+
+    // --- 1. Bloques por defecto de Gutenberg -------------------------------
+    // Se excluyen las alineaciones de core, que deben poder escapar del limite.
+    > *:where(:not(.alignfull):not(.alignwide):not([class*="wp-block-acemar"])) {
+        max-width: $content-max-width;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: $content-padding;
+        padding-right: $content-padding;
+
+        @include respond-to('tablet') {
+            padding-left: $content-padding-tablet;
+            padding-right: $content-padding-tablet;
+        }
+
+        @include respond-to('mobile') {
+            padding-left: $content-padding-mobile;
+            padding-right: $content-padding-mobile;
+        }
+    }
+
+    // --- 2. Bloques de Acemar: ancho completo ------------------------------
+    // No llevan limite ni padding del tema: cada bloque gestiona el suyo.
+    // Cubre los dos namespaces del plugin: acemar/* y acemar-blocks/*.
+    > [class*="wp-block-acemar"] {
+        max-width: none;
+    }
+
+    // --- 3. Excepcion: testimonios --------------------------------------
+    // El bloque se guarda con .alignfull en su propio markup, asi que hay que
+    // deshacer los tres valores que esa clase fija (width, max-width y los
+    // margenes negativos). No se toca su padding interno: es del plugin.
+    > .wp-block-acemar-testimonios {
+        max-width: $content-max-width;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

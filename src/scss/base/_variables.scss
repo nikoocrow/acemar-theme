@@ -47,3 +47,10 @@ $breakpoint-wide: 1200px;
 
 // Container
 $container-max-width: 1200px;
+
+// Ancho del contenido editable (bloques por defecto de Gutenberg).
+// $content-max-width es la caja completa; el texto respira gracias al padding.
+$content-max-width: 1440px;
+$content-padding: $spacing-xl;          // 48px — desktop
+$content-padding-tablet: $spacing-md;   // 24px
+$content-padding-mobile: $spacing-sm;   // 16px

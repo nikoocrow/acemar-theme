@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Botones base
 .btn {
   display: inline-block;
@@ -44,17 +46,9 @@
 }
 
 // Variantes de botones
-.btn-primary {
-  border-color: $color-primary;
-  background-color: transparent;
-  color: $color-secondary;
-  
-  &:hover,
-  &:focus {
-    background-color: $color-primary;
-    color: $color-secondary;
-  }
-}
+// .btn-primary y .btn-outline se conservan como alias semanticos: no declaran
+// nada que .btn no tenga ya, por eso no tienen reglas propias. Siempre se usan
+// junto a .btn, asi que heredan el estilo base sin duplicarlo.
 
 .btn-secondary {
   border-color: $color-secondary;
@@ -97,17 +91,6 @@
   width: 100%;
 }
 
-// Botón outline (invertido)
-.btn-outline {
-  background-color: transparent;
-  
-  &:hover,
-  &:focus {
-    background-color: $color-primary;
-    border-color: $color-primary;
-  }
-}
-
 // Botón sólido
 .btn-solid {
   background-color: $color-primary;
@@ -116,8 +99,8 @@
   
   &:hover,
   &:focus {
-    background-color: darken($color-primary, 10%);
-    border-color: darken($color-primary, 10%);
+    background-color: color.adjust($color-primary, $lightness: -10%);
+    border-color: color.adjust($color-primary, $lightness: -10%);
     color: $color-secondary;
   }
 }

@@ -66,14 +66,10 @@ h6 {
 }
 
 // Paragraphs
+// Sin margenes laterales: el ancho lo define layout/_content-width.scss
 p {
   font-family: $font-body;
-  margin-bottom: $spacing-sm;
-  margin: 1rem 5rem;
-
-  &:last-child {
-    margin: 20px 50px;
-  }
+  margin: 1rem 0;
 }
 
 // Gutenberg paragraph block
@@ -92,7 +88,7 @@ p {
 
 // Gutenberg image block
 .wp-block-image {
-  margin: 1rem 5rem;
+  margin: 1rem auto;
   border-radius: $border-radius * 4;
   overflow: hidden;
 
@@ -101,11 +97,11 @@ p {
   }
 
   @include respond-to('tablet') {
-    margin: 1rem $spacing-md;
+    margin: 1rem auto;
   }
 
   @include respond-to('mobile') {
-    margin: 1rem $spacing-sm;
+    margin: 1rem auto;
   }
 }
 
@@ -132,17 +128,20 @@ ul.wp-block-list,
 ol.wp-block-list,
 .entry-content > ul,
 .entry-content > ol {
-  // Mismo modelo de caja que los párrafos (margen global de p +
-  // padding de .wp-block-paragraph) más una sangría interna moderada
-  margin: 1rem 5rem;
-  padding-left: $spacing-xl + $spacing-sm;
+  // Se centran como el resto del contenido; el padding lateral es el del
+  // contenedor mas la sangria que necesitan las viñetas.
+  margin: 1rem auto;
+  padding-left: $content-padding + $spacing-md;
+  padding-right: $content-padding;
 
   @include respond-to('tablet') {
-    padding-left: $spacing-md + $spacing-sm;
+    padding-left: $content-padding-tablet + $spacing-md;
+    padding-right: $content-padding-tablet;
   }
 
   @include respond-to('mobile') {
-    padding-left: $spacing-sm + $spacing-xs;
+    padding-left: $content-padding-mobile + $spacing-sm;
+    padding-right: $content-padding-mobile;
   }
 
   li {
