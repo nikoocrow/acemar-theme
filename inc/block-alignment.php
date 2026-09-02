@@ -98,3 +98,41 @@ function acemar_text_align_justify_css() {
     );
 }
 add_action('enqueue_block_assets', 'acemar_text_align_justify_css');
+
+// ============================================================
+// 4. JUSTIFICADO POR DEFECTO EN EL CPT DE PROYECTOS
+// ============================================================
+/**
+ * El frontend lo resuelve el tema, en src/scss/pages/_single-proyecto.scss
+ * (.proyecto-info__descripcion y .proyecto-caso__texto). Aquí se replica
+ * dentro del editor para que el admin vea lo mismo que la web.
+ *
+ * Se apoya en la herencia de text-align: los párrafos sin alineación propia
+ * toman justify, y los que llevan .has-text-align-left|center|right conservan
+ * la suya, porque una declaración propia siempre gana a un valor heredado.
+ * Por eso no hace falta subir especificidad ni usar !important.
+ *
+ * `enqueue_block_assets` también corre en el frontend, de ahí el is_admin():
+ * fuera del editor esta regla no debe emitirse.
+ */
+function acemar_proyecto_justify_editor_css() {
+    if ( ! is_admin() || ! function_exists( 'get_current_screen' ) ) {
+        return;
+    }
+
+    $screen = get_current_screen();
+    if ( ! $screen || 'acemar_proyecto' !== $screen->post_type ) {
+        return;
+    }
+
+    wp_add_inline_style(
+        'wp-block-library',
+        '.editor-styles-wrapper .block-editor-block-list__layout{'
+        . 'text-align:justify;'
+        . 'text-justify:inter-word;'
+        . '-webkit-hyphens:auto;'
+        . 'hyphens:auto;'
+        . '}'
+    );
+}
+add_action('enqueue_block_assets', 'acemar_proyecto_justify_editor_css');

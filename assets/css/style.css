@@ -3224,6 +3224,14 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   aspect-ratio: 4/3;
 }
 
+.proyecto-info__descripcion,
+.proyecto-caso__texto {
+  text-align: justify;
+  text-justify: inter-word;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
 .page-404 {
   padding: 0 !important;
   min-height: 80vh;

@@ -490,3 +490,20 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 }
+
+// ============================================
+// JUSTIFICADO POR DEFECTO — CPT PROYECTOS
+// ============================================
+// text-align se hereda, asi que los parrafos sin alineacion propia toman
+// justify y los que llevan .has-text-align-left|center|right conservan la
+// suya: una declaracion propia siempre gana a un valor heredado, sin
+// necesidad de subir especificidad ni usar !important.
+//
+// La contraparte para el editor esta en inc/block-alignment.php (seccion 4).
+.proyecto-info__descripcion,
+.proyecto-caso__texto {
+    text-align: justify;
+    text-justify: inter-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
