@@ -120,7 +120,7 @@ function acemar_enqueue_assets() {
     );
 
     // JS del Blog
-    if (is_post_type_archive('acemar_blog') || is_singular('acemar_blog') || is_tax('blog_category')) {
+    if (is_home() || is_singular('post') || is_category() || is_tag()) {
         wp_enqueue_script(
             'acemar-blog-script',
             $uri . '/assets/js/blog.js',

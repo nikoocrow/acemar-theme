@@ -31,7 +31,7 @@ https://claude.ai/code/artifact/46578c2e-c6ea-4b57-933e-64e6dd034c83
 | `#1F2020` | `_header.scss` (2×) | Header sticky + overlay móvil |
 | `#2A2B2B` | `_header.scss` | Submenú del overlay |
 | `#2F3131` | `_footer.scss` | Fondo del footer |
-| `#222` `#ddd` `#e0e0e0` | `_blog.scss` | Grises propios del blog |
+| `#222` `#ddd` `#e0e0e0` | `_blog.scss`, `_single-post.scss` | Grises propios del blog |
 | `#ccc` `#8B6F47` `#D9D4CC` `#E8E4DE` | `_single-proyecto.scss` | Parte de su paleta paralela |
 
 Los tres oscuros (`#1F2020`, `#2A2B2B`, `#2F3131`) son valores distintos: darles un token
@@ -126,11 +126,12 @@ $content-padding-mobile: $spacing-sm;   // 16px
 
 | Selector | Plantillas |
 |---|---|
-| `.entry-content` | `page.php`, `single.php`, `index.php` |
+| `.entry-content` | `page.php`, `index.php` |
 | `.hero-page` | `template-hero-home.php` (imprime los bloques directamente en `<main>`, sin envoltorio) |
 
-⚠️ **No cubre `single-acemar_blog.php`**: la entrada de blog tiene su propio sistema de
-ancho en `pages/_blog.scss` (`.single-blog-content .content-wrapper`).
+⚠️ **No cubre `single.php`**: el detalle del post tiene su propio sistema de ancho en
+`pages/_single-post.scss` (`.single-blog-content .content-wrapper`, 800 px fijos). Ahí los
+bloques del plugin Acemar **no** salen a ancho completo.
 
 ### Detalles de implementación
 

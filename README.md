@@ -60,6 +60,7 @@ acemar-theme/
 │       │   └── _blocks.scss
 │       ├── pages/
 │       │   ├── _blog.scss
+│       │   ├── _single-post.scss
 │       │   ├── _single-proyecto.scss
 │       │   └── _404.scss
 │       ├── utilities/
