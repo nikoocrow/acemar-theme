@@ -504,6 +504,9 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 .proyecto-caso__texto {
     text-align: justify;
     text-justify: inter-word;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+
+    // Sin separacion silabica: preferimos espacios entre palabras mas anchos
+    // antes que cortar palabras con guion a final de linea.
+    -webkit-hyphens: none;
+    hyphens: none;
 }
