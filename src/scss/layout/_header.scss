@@ -163,6 +163,55 @@
 }
 
 // ============================================
+// Menú compacto (laptops chicas / tablets horizontales)
+// ============================================
+
+// Los items no se encogen (nowrap + flex-shrink: 0), así que a anchos
+// intermedios se reduce tipografía, espaciado y logo para que el header
+// entre en el viewport sin desbordar.
+@include respond-to(nav-compact) {
+    .site-header .header-inner {
+        gap: $spacing-sm;
+    }
+
+    .site-branding .site-logo {
+        width: auto !important;
+
+        .logo-img {
+            max-width: 130px;
+        }
+    }
+
+    .main-navigation #primary-menu {
+        gap: 0;
+
+        > li > a {
+            font-size: 0.8125rem; // 13px
+            letter-spacing: 0.03em;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+
+            &::after {
+                left: 0.5rem;
+                right: 0.5rem;
+            }
+        }
+
+        > li.menu-item-has-children > a {
+            padding-right: 1.5rem;
+
+            &::after {
+                right: 1.5rem;
+            }
+
+            &::before {
+                right: 0.5rem;
+            }
+        }
+    }
+}
+
+// ============================================
 // Menú Mobile (dropdown hacia abajo)
 // ============================================
 

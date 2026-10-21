@@ -2,7 +2,6 @@ $accent:     #C8A96E;
 $dark:       #1A1A1A;
 $mid:        #4A4A4A;
 $light:      #F5F2EE;
-$radius:     12px;
 $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // HERO
@@ -76,7 +75,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &__imagen img {
         width: 100%;
         height: auto;
-        border-radius: $radius;
         display: block;
         object-fit: cover;
 
@@ -159,7 +157,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 
     &__slider .splide__slide {
-        border-radius: $radius;
         overflow: hidden;
         cursor: pointer;
 
@@ -168,7 +165,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             height: 320px;
             object-fit: cover;
             display: block;
-            border-radius: $radius;
             transition: transform $transition;
 
             @media (min-width: 768px) { height: 420px; }
@@ -252,7 +248,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
-            border-radius: 8px;
             display: block;
         }
     }
@@ -361,7 +356,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: block;
         width: 100%;
         position: relative;
-        border-radius: $radius;
         overflow: hidden;
         text-decoration: none;
         line-height: 0;
@@ -372,7 +366,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         height: 280px;
         object-fit: cover;
         display: block;
-        border-radius: $radius;
         transition: transform $transition;
 
         @media (min-width: 768px) { height: 300px; }
@@ -382,7 +375,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: absolute;
         inset: 0;
         background: linear-gradient(to top, rgba(20,18,14,0.55) 0%, transparent 60%);
-        border-radius: $radius;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -483,7 +475,6 @@ $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         img {
             width: 100%;
             height: auto;
-            border-radius: $radius;
             display: block;
             object-fit: cover;
             aspect-ratio: 4 / 3;

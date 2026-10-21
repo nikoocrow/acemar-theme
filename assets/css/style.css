@@ -210,11 +210,7 @@ p {
 
 .wp-block-image {
   margin: 1rem auto;
-  border-radius: 16px;
   overflow: hidden;
-}
-.wp-block-image img {
-  border-radius: 16px;
 }
 @media (max-width: 768px) {
   .wp-block-image {
@@ -454,7 +450,7 @@ i {
   z-index: 300;
   overflow: hidden;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar {
     overflow: visible;
     height: auto;
@@ -489,7 +485,7 @@ i {
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__trigger {
     height: 44px;
     padding: 0 1.5rem;
@@ -564,7 +560,7 @@ i {
   opacity: 1;
   pointer-events: auto;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav {
     position: fixed;
     top: 0;
@@ -626,7 +622,7 @@ i {
   padding: 0;
   gap: 0;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav #top-bar-menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -679,7 +675,7 @@ i {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav #top-bar-menu li a {
     display: block;
     font-size: 0.875rem;
@@ -694,12 +690,12 @@ i {
     display: none;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav #top-bar-menu li:last-child a {
     border-bottom: none;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav #top-bar-menu li {
     opacity: 0;
     -webkit-transform: translateX(10px);
@@ -758,7 +754,7 @@ i {
     transition-delay: 0.48s;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar__nav.nav-open #top-bar-menu li {
     opacity: 1;
     -webkit-transform: translateX(0);
@@ -838,7 +834,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .top-bar--transparent .top-bar__nav #top-bar-menu li a:hover {
   color: #F4C430;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .top-bar--transparent {
     background-color: #000000;
   }
@@ -899,7 +895,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   z-index: 300;
   position: relative;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .menu-toggle {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1056,7 +1052,40 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   right: 0.75rem;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1101px) and (max-width: 1280px) {
+  .site-header .header-inner {
+    gap: 1rem;
+  }
+  .site-branding .site-logo {
+    width: auto !important;
+  }
+  .site-branding .site-logo .logo-img {
+    max-width: 130px;
+  }
+  .main-navigation #primary-menu {
+    gap: 0;
+  }
+  .main-navigation #primary-menu > li > a {
+    font-size: 0.8125rem;
+    letter-spacing: 0.03em;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .main-navigation #primary-menu > li > a::after {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  .main-navigation #primary-menu > li.menu-item-has-children > a {
+    padding-right: 1.5rem;
+  }
+  .main-navigation #primary-menu > li.menu-item-has-children > a::after {
+    right: 1.5rem;
+  }
+  .main-navigation #primary-menu > li.menu-item-has-children > a::before {
+    right: 0.5rem;
+  }
+}
+@media (max-width: 1100px) {
   .main-navigation {
     position: fixed;
     top: 0;
@@ -1227,7 +1256,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .header-transparent .menu-toggle {
   color: #ffffff;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .header-transparent .main-navigation {
     background-color: rgba(0, 0, 0, 0.97);
   }
@@ -1261,7 +1290,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .header-minimal .logo-img a {
   width: 200px !important;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .header-minimal .logo-img {
     max-width: 80px !important;
     height: 50px !important;
@@ -1312,7 +1341,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .site-branding .site-logo .logo-img {
     max-width: 120px;
   }
@@ -1455,7 +1484,7 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   pointer-events: auto;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .main-navigation #primary-menu li.menu-item-has-children > a {
     padding-right: 3rem;
   }
@@ -2606,7 +2635,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .single-blog .single-blog-content .content-wrapper img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
   margin: 2em 0;
 }
 .single-blog .single-blog-content .content-wrapper ul, .single-blog .single-blog-content .content-wrapper ol {
@@ -2779,7 +2807,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .proyecto-info__imagen img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
   display: block;
   -o-object-fit: cover;
   object-fit: cover;
@@ -2877,7 +2904,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   position: relative;
 }
 .proyecto-galeria__slider .splide__slide {
-  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -2887,7 +2913,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   -o-object-fit: cover;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3007,7 +3032,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   max-height: 80vh;
   -o-object-fit: contain;
   object-fit: contain;
-  border-radius: 8px;
   display: block;
 }
 .proyecto-lightbox__caption {
@@ -3140,7 +3164,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   display: block;
   width: 100%;
   position: relative;
-  border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
   line-height: 0;
@@ -3151,7 +3174,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   -o-object-fit: cover;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3167,7 +3189,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
   inset: 0;
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(20, 18, 14, 0.55)), color-stop(60%, transparent));
   background: linear-gradient(to top, rgba(20, 18, 14, 0.55) 0%, transparent 60%);
-  border-radius: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3280,7 +3301,6 @@ div#top-bar.top-bar-sticky .top-bar__nav #top-bar-menu li a:hover {
 .proyecto-caso__imagen img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
   display: block;
   -o-object-fit: cover;
   object-fit: cover;

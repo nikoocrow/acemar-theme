@@ -89,12 +89,7 @@ p {
 // Gutenberg image block
 .wp-block-image {
   margin: 1rem auto;
-  border-radius: $border-radius * 4;
   overflow: hidden;
-
-  img {
-    border-radius: $border-radius * 4;
-  }
 
   @include respond-to('tablet') {
     margin: 1rem auto;

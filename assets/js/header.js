@@ -51,7 +51,7 @@
         // Submenús
         // ----------------------------------------
         var isMobile = function () {
-            return window.innerWidth <= 1024;
+            return window.innerWidth <= 1100; // = $breakpoint-nav
         };
 
         var closeAllSubmenus = function (except) {
